@@ -43,3 +43,22 @@ code, pre {
 }
 
 pre { padding: 12px; border-radius: 10px; overflow: auto; }
+
+details {
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(15, 22, 35, 0.6);
+  padding: 10px 12px;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  list-style: none;
+}
+
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "> "; color: var(--muted); }
+details[open] summary::before { content: "v "; }
+
