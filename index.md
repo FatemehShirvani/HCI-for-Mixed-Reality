@@ -15,7 +15,40 @@ Type: ls, cd lecture, cd lab, cd hw1, cd ..
 
 <div class="term-inputline">
   <span class="prompt">$</span>
-  <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
+  <span class="inputwrap">
+    <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
+    <span id="blk" class="blk" aria-hidden="true">█</span>
+  </span>
 </div>
+</div>
+<script>
+  const input = document.getElementById('termIn');
+  const blk = document.getElementById('blk');
 
-</div>
+  function updateBlock() {
+    // caret position
+    const pos = input.selectionStart ?? 0;
+
+    // measure width of text up to caret using a hidden canvas
+    const style = getComputedStyle(input);
+    const font = `${style.fontSize} ${style.fontFamily}`;
+    const text = input.value.slice(0, pos);
+
+    const canvas = updateBlock._c || (updateBlock._c = document.createElement('canvas'));
+    const ctx = canvas.getContext('2d');
+    ctx.font = font;
+
+    const w = ctx.measureText(text).width;
+
+    blk.style.transform = `translateX(${w}px)`;
+  }
+
+  // hide the real caret
+  input.style.caretColor = 'transparent';
+
+  ['input','click','keyup','keydown','focus'].forEach(ev =>
+    input.addEventListener(ev, () => requestAnimationFrame(updateBlock))
+  );
+
+  updateBlock();
+</script>
