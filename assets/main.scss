@@ -298,3 +298,28 @@ details[open] summary::before {
   display: none !important;
 }
 
+/* Step 19: block cursor overlay */
+.inputwrap {
+  position: relative;
+  display: inline-block;
+}
+
+.term-input {
+  caret-color: transparent !important; /* hide thin caret */
+}
+
+.blk {
+  position: absolute;
+  left: 2px;            /* small offset after prompt gap */
+  top: 0;
+  color: #22c55e;
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
