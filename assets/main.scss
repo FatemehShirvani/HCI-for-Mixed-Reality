@@ -151,4 +151,10 @@ html, body {
 .page-content, .wrapper, main {
   background: #000000 !important;
 }
+/* Step 6: remove website header completely */
+.site-header,
+.site-nav,
+header {
+  display: none !important;
+}
 
