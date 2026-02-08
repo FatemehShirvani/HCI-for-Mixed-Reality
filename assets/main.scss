@@ -222,3 +222,30 @@ details[open] summary::before {
 @keyframes blink {
   50% { opacity: 0; }
 }
+/* Step 14: real terminal cursor behavior */
+
+/* hide browser caret */
+.term-input {
+  caret-color: transparent !important;
+}
+
+/* keep input inline so cursor follows text */
+.term-inputline {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+/* terminal cursor */
+.cursor {
+  color: #22c55e; /* terminal green */
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1;
+  margin-left: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
