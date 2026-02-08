@@ -53,3 +53,56 @@ summary {
 summary::-webkit-details-marker { display: none; }
 summary::before { content: "> "; color: var(--muted); }
 details[open] summary::before { content: "v "; }
+/* ===== Extra terminal look ===== */
+
+/* tighter, terminal-ish typography */
+body {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.2px;
+}
+
+/* remove “site/blog” vibe spacing */
+.post-content h1, .post-content h2, .post-content h3,
+h1, h2, h3 {
+  letter-spacing: 0.5px;
+}
+
+/* add a terminal prompt before headings */
+h1::before, h2::before {
+  content: "$ ";
+  color: var(--muted);
+}
+
+/* make links look like terminal highlights */
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* terminal-style cards */
+details {
+  box-shadow: 0 0 0 1px rgba(31,42,58,0.8);
+}
+
+/* make dropdown summary feel like a command */
+summary {
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* a subtle “cursor” effect on the page title */
+.page-heading::after, .post-list-heading::after {
+  content: " ▋";
+  color: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* hide RSS line if you want it cleaner */
+a[href*="feed.xml"], .rss-subscribe {
+  display: none !important;
+}
+
