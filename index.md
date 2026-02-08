@@ -1,32 +1,41 @@
 ---
-
 layout: home
 title: Class Blog
-
 ---
 
-## Sessions
+## Lecture Homeworks
 
 <details>
-  <summary><b>Session 1 — Introduction</b></summary>
-  <p>What we covered, links, media.</p>
+  <summary><b>Lecture HW1 — Title</b></summary>
   <ul>
-    <li><a href="/assets/files/session1-slides.pdf">Slides (PDF)</a></li>
-    <li><a href="/posts/2026/02/06/session-1.html">Post / Notes</a></li>
+    <li><a href="{{ site.baseurl }}/assets/files/lecture-hw1-report.pdf">Report (PDF)</a></li>
+    <li><a href="{{ site.baseurl }}/assets/images/lecture-hw1-demo.png">Images</a></li>
+    <li><a href="{{ site.baseurl }}/posts/2026/02/06/first-assignment.html">Post</a></li>
+  </ul>
+
+  <details>
+    <summary><b>Submission Notes</b></summary>
+    <p>Short notes, constraints, what you learned…</p>
+  </details>
+</details>
+
+<details>
+  <summary><b>Lecture HW2 — Title</b></summary>
+  <p>Add content here…</p>
+</details>
+
+
+## Lab Homeworks
+
+<details>
+  <summary><b>Lab HW1 — Title</b></summary>
+  <ul>
+    <li><a href="{{ site.baseurl }}/assets/files/lab-hw1.pdf">PDF</a></li>
+    <li><a href="{{ site.baseurl }}/assets/images/lab-hw1-1.png">Photo 1</a></li>
   </ul>
 </details>
 
 <details>
-  <summary><b>Session 2 — Prototyping</b></summary>
-  <p>Add your content here…</p>
-</details>
-
-## Assignments
-
-<details>
-  <summary><b>Assignment 1 — Topic</b></summary>
-  <ul>
-    <li><a href="/assets/files/assignment1.pdf">Report (PDF)</a></li>
-    <li><a href="/assets/images/a1-demo.png">Demo image</a></li>
-  </ul>
+  <summary><b>Lab HW2 — Title</b></summary>
+  <p>Add content here…</p>
 </details>
