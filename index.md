@@ -9,10 +9,10 @@
 HCI for MR — v.2026
 </pre>
 <div id="term" class="term">
-  <div class="term-output" id="termOut">
-HCI-for-MR v2026
+<div class="term-output" id="termOut">HCI-for-MR v2026
 Type: ls, cd lecture, cd lab, cd hw1, cd ..
-  </div>
+</div>
+
 <div class="term-inputline">
   <span class="prompt">$</span>
   <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
@@ -21,3 +21,14 @@ Type: ls, cd lecture, cd lab, cd hw1, cd ..
 </div>
 
 </div>
+<script>
+  const input = document.getElementById('termIn');
+  const mirror = document.getElementById('mirror');
+
+  function sync() {
+    mirror.textContent = input.value || "";
+  }
+
+  input.addEventListener('input', sync);
+  sync();
+</script>
