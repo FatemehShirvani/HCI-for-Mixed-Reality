@@ -1,7 +1,3 @@
----
-layout: home
-title: Class Blog
----
 <pre class="ascii-title">
     __  ____________   ____              __  _______ 
    / / / / ____/  _/  / __/___  _____   /  |/  / __ \
