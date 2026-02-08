@@ -183,4 +183,12 @@ summary::before {
 details[open] summary::before {
   content: "$ " !important; /* keep it terminal-style even when open */
 }
+/* Step 10: hide Minima blog parts (Posts + footer) */
+.post-list, .post-list-heading, .post-meta, .post-link, .rss-subscribe {
+  display: none !important;
+}
+
+.site-footer, footer {
+  display: none !important;
+}
 
