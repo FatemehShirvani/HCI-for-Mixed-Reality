@@ -12,6 +12,10 @@ title: Class Blog
 
 HCI for MR — v.2026
 </pre>
+<div class="terminal-line">
+  <span class="prompt">$</span> _
+</div>
+
 
 ## Lecture Homeworks
 
