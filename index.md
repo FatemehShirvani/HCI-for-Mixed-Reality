@@ -20,6 +20,7 @@ Type: ls, cd lecture, cd lab, cd hw1, cd ..
     <span id="blk" class="blk" aria-hidden="true">█</span>
   </span>
 </div>
+</div>
 <script>
   const input = document.getElementById('termIn');
   const blk = document.getElementById('blk');
@@ -51,4 +52,3 @@ Type: ls, cd lecture, cd lab, cd hw1, cd ..
 
   updateBlock();
 </script>
-</div>
