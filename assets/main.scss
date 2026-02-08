@@ -106,3 +106,9 @@ a[href*="feed.xml"], .rss-subscribe {
   display: none !important;
 }
 
+details details {
+  margin-top: 10px;
+  margin-left: 18px;
+  border-left: 2px solid var(--border);
+  padding-left: 12px;
+}
