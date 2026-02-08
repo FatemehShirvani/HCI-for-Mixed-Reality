@@ -248,4 +248,18 @@ details[open] summary::before {
 @keyframes blink {
   50% { opacity: 0; }
 }
+/* Step 15: mirror text drives cursor position */
+.term-input {
+  width: 1ch !important;         /* stop it taking a big width */
+  color: transparent !important; /* hide input text */
+  text-shadow: none !important;
+}
+
+.mirror {
+  font-family: var(--mono);
+  font-size: 16px;
+  color: #e5e7eb;     /* visible typed text */
+  white-space: pre;   /* keep spaces */
+  margin-left: 0;
+}
 
