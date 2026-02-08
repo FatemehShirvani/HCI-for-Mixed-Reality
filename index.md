@@ -16,19 +16,6 @@ Type: ls, cd lecture, cd lab, cd hw1, cd ..
 <div class="term-inputline">
   <span class="prompt">$</span>
   <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
-  <span id="mirror" class="mirror" aria-hidden="true"></span>
-  <span class="cursor" aria-hidden="true">█</span>
 </div>
 
 </div>
-<script>
-  const input = document.getElementById('termIn');
-  const mirror = document.getElementById('mirror');
-
-  function sync() {
-    mirror.textContent = input.value || "";
-  }
-
-  input.addEventListener('input', sync);
-  sync();
-</script>
