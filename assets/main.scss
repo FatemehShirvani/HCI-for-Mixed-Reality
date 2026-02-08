@@ -143,3 +143,12 @@ details details {
   box-shadow: none !important;
   padding: 0 !important;
 }
+/* Step 5: force pure terminal black background */
+html, body {
+  background: #000000 !important;
+}
+
+.page-content, .wrapper, main {
+  background: #000000 !important;
+}
+
