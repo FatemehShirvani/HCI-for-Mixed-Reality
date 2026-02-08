@@ -122,3 +122,24 @@ details details {
   white-space: pre;
 }
 
+/* Step 4: real terminal prompt + no card look */
+.prompt {
+  color: #22c55e !important; /* green */
+  font-weight: 700;
+}
+
+.terminal-line {
+  font-family: var(--mono);
+  margin: 10px 0;
+  padding: 0;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* remove any border/background around the ASCII title */
+.ascii-title {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
