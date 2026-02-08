@@ -13,9 +13,11 @@ HCI for MR — v.2026
 HCI-for-MR v2026
 Type: ls, cd lecture, cd lab, cd hw1, cd ..
   </div>
-  <div class="term-inputline">
+<div class="term-inputline">
   <span class="prompt">$</span>
   <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
+  <span id="mirror" class="mirror" aria-hidden="true"></span>
   <span class="cursor" aria-hidden="true">█</span>
 </div>
+
 </div>
