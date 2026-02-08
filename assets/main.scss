@@ -157,4 +157,30 @@ html, body {
 header {
   display: none !important;
 }
+/* Step 7: dropdowns as plain terminal lines (no boxes) */
+details {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 8px 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+summary {
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #e5e7eb !important;
+  font-family: var(--mono) !important;
+  font-weight: 400 !important;
+}
+
+summary::before {
+  content: "$ " !important;
+  color: #22c55e !important;
+}
+
+details[open] summary::before {
+  content: "$ " !important; /* keep it terminal-style even when open */
+}
 
