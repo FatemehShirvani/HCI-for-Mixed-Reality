@@ -191,4 +191,22 @@ details[open] summary::before {
 .site-footer, footer {
   display: none !important;
 }
+/* Step 11: input looks like terminal text (no box) */
+.term-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #e5e7eb !important;
+  font-family: var(--mono) !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 520px; /* adjust later */
+}
+
+.term-inputline {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
 
