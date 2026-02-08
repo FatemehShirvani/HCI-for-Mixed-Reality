@@ -282,4 +282,19 @@ details[open] summary::before {
   align-items: baseline;
   gap: 8px;
 }
+/* Step 17: restore real typing (override old mirror styles) */
+.term-input {
+  width: 80ch !important;
+  color: #e5e7eb !important;
+  background: transparent !important;
+
+  /* IMPORTANT: undo Step 15 */
+  color: #e5e7eb !important;        /* not transparent */
+  text-shadow: none !important;
+}
+
+/* If you still have .mirror styles, make them harmless */
+.mirror {
+  display: none !important;
+}
 
