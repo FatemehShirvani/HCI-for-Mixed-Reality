@@ -18,7 +18,7 @@ const fileSystem = {
     content: `# Lecture Homework 1: Locomotion Techniques for VR
 By Fatemeh Shirvani & Amélien Le Meur
 
-## 📥 Download Full Presentation
+## Download Full Presentation
 <a href="Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

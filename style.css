@@ -134,7 +134,7 @@ body {
   background: transparent !important;
   border: none !important;
   outline: none !important;
-  color: var(--text) !important;
+  color: var(--green) !important;
   font-family: var(--mono) !important;
   font-size: 16px !important;
   padding: 0 !important;
