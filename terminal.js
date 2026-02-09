@@ -18,7 +18,7 @@ const fileSystem = {
     content: `# Lecture Homework 1: Locomotion Techniques for VR
 By Fatemeh Shirvani & Amélien Le Meur
 
-## Download Full Presentation
+## 📥 Download Full Presentation
 <a href="Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -163,44 +163,252 @@ Presented: Week 2 (December 9, 2024)
   },
   '/lectures/hw2.md': {
     type: 'file',
-    content: `# Lecture Homework 2: Locomotion Pitch (15 Points)
+    content: `# Lecture Homework 2: World-in-Hand Locomotion Pitch (15 Points)
+By Fatemeh Shirvani & Amélien Le Meur
 
-## Assignment
-Give a 5-minute "Elevator Pitch" of ONE locomotion technique you want to implement.
+## 📥 Download Full Presentation
+<a href="Lecture-HW2-WorldInHand.pdf" download>Download PDF (Lecture-HW2-WorldInHand.pdf)</a>
 
-## Project Scenario
-- Parkour scene with winding road
-- 3 route sections with different challenges
-- 4 banners to pass through
-- Must collect coins (some above ground level)
-- Project GitHub: https://github.com/danielpiressm/Parkour
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## Requirements
-- Use visuals and rapid prototyping techniques
-- Show how your locomotion works
-- Upload slides after presentation
-- Reflect on your idea
+<img src="hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-## My Pitch
+## 🎯 Selected Technique: World-in-Hand
 
-### Selected Technique
-[Which of your 3 ideas did you choose?]
+After brainstorming three locomotion ideas in HW1, we selected **"Move the World"** 
+(now called "World-in-Hand") as our technique to implement for the parkour project.
 
-### Concept
-[Explain your locomotion concept]
+### Why We Chose This Technique
 
-### Visual Mockups
-[Add your sketches, diagrams, or prototype screenshots]
+✓ **Lower motion sickness** - User stays stationary in real space  
+✓ **Intuitive metaphor** - Like holding and manipulating a map  
+✓ **No additional UI** - Direct hand manipulation  
+✓ **Solves elevated coins** - World manipulation allows vertical adjustment
 
-### How It Addresses the Parkour Challenge
-- Route navigation: [How does it handle curves?]
-- Elevated coins: [How do users collect coins above ground?]
-- Banner passage: [How do users pass through banners?]
-- User experience: [Why is this enjoyable/effective?]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### Reflection
-[After presenting, what feedback did you receive?]
-[What would you improve?]`
+## 💡 Core Concept
+
+<img src="hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+### Main Idea
+Instead of moving the user through the world, we move the world toward the user.
+
+**Like:**
+- Zooming into a map
+- Pulling the world closer to you
+- Manipulating a miniature diorama in your hands
+
+**Result:** The user stays physically still → lower motion sickness
+
+### Inspiration: How We Perceive the World
+
+<img src="hw2-slide3.jpg" alt="360-degree perception" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+<img src="hw2-slide4.jpg" alt="Pac-Man 360 example" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+We're inspired by 360-degree games where the environment wraps around 
+the player, creating immersion without requiring physical movement.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎮 Interaction Design
+
+<img src="hw2-slide6.jpg" alt="Forward Movement and Jump" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+### Forward Movement
+
+**Input:**
+1. User **pinches both controllers** (grip buttons on both hands)
+2. **Pulls hands slightly apart** → zoom in gesture
+3. Scene scales up uniformly
+4. **Result:** Player appears to move forward through the parkour course
+
+**Why it works:**
+- Natural gesture (like stretching/zooming a map)
+- Continuous control (distance between hands = movement speed)
+- User maintains orientation and balance
+
+### Jump Mechanic
+
+**Input:**
+- **Brief upward hand motion** while zooming
+- Hands move up together while maintaining pinch
+
+**Effect:**
+- World shifts down slightly
+- Player reaches airborne coins
+- Solves the "elevated coins" requirement from parkour scene
+
+**Why it works:**
+- Intuitive (lift world down = you go up)
+- Doesn't break the core zooming metaphor
+- Enables 3D navigation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+<img src="hw2-slide7.jpg" alt="Speed Control and Steering" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+### Speed Control
+
+**Mechanic:**
+- Distance between hands = movement speed
+- Wider apart = faster movement
+- Closer together = slower movement
+
+**Implementation:**
+- **Smooth exponential scaling** (important!)
+- Prevents jerky movements
+- Gives fine control at slow speeds
+- Allows rapid traversal when needed
+
+### Steering (Turning)
+
+**Mechanic:**
+- **Asymmetric hand movement** while zooming
+- Right hand moves more than left → turn right
+- Left hand moves more than right → turn left
+
+**Why it works:**
+- Natural gesture (like turning a steering wheel)
+- Doesn't require additional buttons
+- Integrates smoothly with forward movement
+- Handles curved sections of parkour course
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🏁 Application to Parkour Course
+
+### How It Addresses Requirements
+
+**Route Navigation:**
+- Pinch + pull apart → move along winding road
+- Asymmetric hands → navigate curves smoothly
+
+**Banner Passage:**
+- Continuous zooming allows precise control
+- Easy to align with banner gates
+
+**Coin Collection:**
+- Ground coins: Normal forward movement
+- **Elevated coins: Jump gesture** (upward hand motion)
+
+**User Comfort:**
+- User stays stationary → minimal motion sickness
+- No joystick drift or teleportation disorientation
+- Natural hand gestures reduce cognitive load
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📊 Expected Advantages
+
+✓ **Reduced motion sickness** - User's vestibular system not confused  
+✓ **Intuitive controls** - Familiar zoom/map manipulation gesture  
+✓ **No locomotion UI** - Pure hand interaction  
+✓ **Fine speed control** - Exponential scaling provides precision  
+✓ **3D navigation** - Jump mechanic handles vertical space  
+✓ **Accessible** - No complex button combinations
+
+## ⚠️ Potential Challenges
+
+✗ **Learning curve** - Users need to understand the metaphor  
+✗ **Arm fatigue?** - Sustained pinch gesture over long sessions  
+✗ **Scale calibration** - Finding right sensitivity for speed/steering  
+✗ **Motion sickness?** - World scaling might still affect some users
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🔬 Evaluation Plan
+
+### Metrics to Test (from HW1)
+
+**Performance:**
+- Completion time through parkour course
+- Accuracy (staying on path, hitting banners)
+- Coins collected (ground + elevated)
+
+**User Experience (1-10 scales):**
+- Motion sickness: "How much motion sickness do you perceive?"
+- Ease of use: "How easy was it to perform the task?"
+- Presence: "How present did you feel in the virtual world?"
+- Enjoyment: "How much fun did you have?"
+
+**Comparison Baseline:**
+- Traditional joystick locomotion
+- Teleportation (if available)
+
+### Hypotheses
+
+**H1:** World-in-Hand will have **lower motion sickness** than joystick  
+**H2:** Users will achieve **similar accuracy** after brief learning period  
+**H3:** **Elevated coin collection** will be more successful than joystick  
+**H4:** Initial ease-of-use may be **lower** (learning curve) but improve quickly
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🛠️ Implementation Plan
+
+### Technical Requirements
+
+1. **Hand tracking or controller input**
+   - Detect pinch gesture (grip buttons)
+   - Track hand positions in 3D space
+   - Calculate distance between hands
+
+2. **World transformation**
+   - Scale entire scene based on hand distance
+   - Translate scene for steering (asymmetric input)
+   - Vertical offset for jump mechanic
+
+3. **Smoothing and calibration**
+   - Exponential scaling function
+   - Dead zones to prevent jitter
+   - Maximum/minimum speed limits
+
+### Next Steps (for HW3 & HW5)
+
+- Implement basic forward movement
+- Add steering mechanics
+- Integrate jump for elevated coins
+- Calibrate speed scaling curve
+- User testing with 3 participants
+- Iterate based on feedback
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🎓 Presentation Reflection
+
+### What We Learned
+
+This pitch helped us clarify:
+- **The core metaphor** - "Holding the world in your hands"
+- **Specific gestures** - Pinch, zoom, asymmetric steering, jump
+- **Technical challenges** - Exponential scaling, calibration needs
+- **Evaluation strategy** - Clear hypotheses to test
+
+### Instructor/Peer Feedback
+
+[Add feedback received during presentation here]
+
+### Refinements Since Pitch
+
+[Document any changes made after presentation feedback]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📅 Timeline
+
+- **HW1:** Brainstormed 3 ideas (Frame Split, Motion Map, World-in-Hand)
+- **HW2:** Pitched World-in-Hand technique ✅
+- **HW3:** User evaluation with 3 participants (upcoming)
+- **HW5:** Full implementation in Unity parkour scene (upcoming)
+- **HW4:** Final presentation with results (Feb 3, 2025)
+
+## 🔗 Resources
+
+- Full presentation: Lecture-HW2-WorldInHand.pdf
+- Related work: VR locomotion techniques, world-scaling interfaces
+- Next: Implement and test (Labs HW4-5)`
   },
   '/lectures/hw3.md': {
     type: 'file',
