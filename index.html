@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCI for MR - Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-content">
+    <main>
+      <pre class="ascii-title">
+    __  ____________   ____              __  _______ 
+   / / / / ____/  _/  / __/___  _____   /  |/  / __ \
+  / /_/ / /    / /   / /_/ __ \/ ___/  / /|_/ / /_/ /
+ / __  / /____/ /   / __/ /_/ / /     / /  / / _, _/ 
+/_/ /_/\____/___/  /_/  \____/_/     /_/  /_/_/ |_|  
+                                                     
+Fatemeh Shirvani | IP Paris 2025-2026
+</pre>
+
+      <div id="term" class="term">
+        <div class="term-output" id="termOut"></div>
+        
+        <div class="term-inputline">
+          <span class="prompt">$</span>
+          <span class="inputwrap">
+            <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
+            <span id="blk" class="blk" aria-hidden="true">█</span>
+          </span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>

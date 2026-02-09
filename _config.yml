@@ -1,9 +1,0 @@
-title: HCI for MR
-description: Projects and assignments from our course
-theme: minima
-
-url: "https://fatemehshirvani.github.io"
-baseurl: "/HCI-for-Mixed-Reality"
-
-plugins:
-  - jekyll-feed

@@ -1,0 +1,238 @@
+/* ===== Terminal Theme Variables ===== */
+:root {
+  --bg: #000000;
+  --panel: #0f1623;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #7dd3fc;
+  --green: #22c55e;
+  --border: #1f2a3a;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--mono) !important;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 0.2px;
+}
+
+body {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== ASCII Title ===== */
+.ascii-title {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.1;
+  color: var(--text);
+  background: transparent;
+  margin: 0 0 30px 0;
+  white-space: pre;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ===== Terminal Container ===== */
+.term {
+  margin-top: 20px;
+}
+
+.term-output {
+  margin-bottom: 15px;
+  min-height: 20px;
+}
+
+/* ===== Terminal Lines ===== */
+.terminal-line {
+  font-family: var(--mono);
+  margin: 8px 0;
+  padding: 0;
+  border: none !important;
+  background: transparent !important;
+  line-height: 1.6;
+}
+
+.terminal-line.command {
+  color: var(--green);
+}
+
+.terminal-line.system {
+  color: var(--muted);
+}
+
+.terminal-line.error {
+  color: #ef4444;
+}
+
+.terminal-line code {
+  background: var(--panel);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.terminal-line strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===== Embedded Images in Terminal ===== */
+.terminal-line img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  display: block;
+}
+
+.term-output img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  display: block;
+}
+
+/* ===== Input Line ===== */
+.term-inputline {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.prompt {
+  color: var(--green) !important;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ===== Input Field ===== */
+.inputwrap {
+  position: relative;
+  display: inline-block;
+  flex: 1;
+}
+
+.term-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: var(--text) !important;
+  font-family: var(--mono) !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+  caret-color: transparent !important;
+}
+
+/* ===== Block Cursor ===== */
+.blk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1.2em;
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--accent) !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+/* ===== Code Blocks ===== */
+pre {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+/* ===== Scrollbar (Optional) ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  .ascii-title {
+    font-size: 10px;
+  }
+  
+  html, body {
+    font-size: 14px;
+  }
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ===== Page Content ===== */
+.page-content, .wrapper, main {
+  background: transparent !important;
+  color: var(--text) !important;
+}
