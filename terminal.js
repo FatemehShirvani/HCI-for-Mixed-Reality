@@ -19,13 +19,13 @@ const fileSystem = {
 By Fatemeh Shirvani & Amélien Le Meur
 
 ## 📥 Download Full Presentation
-<a href="Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
+<a href="homework/Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## Idea 1: Frame Split
 
-<img src="hw1-slide2.jpg" alt="Frame Split Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide2.jpg" alt="Frame Split Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 The user uses their handheld controllers to split the frame, bringing 
@@ -41,7 +41,7 @@ Mimic traditional animation frames and limit motion-sickness
 - Each frame shows a step closer to the destination
 - Inspired by stop-motion animation and flipbook aesthetics
 
-<img src="hw1-slide3.jpg" alt="Frame Split Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide3.jpg" alt="Frame Split Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ No motion sickness
@@ -63,7 +63,7 @@ What we want to test:
 
 ## Idea 2: Motion Map
 
-<img src="hw1-slide4.jpg" alt="Motion Map Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide4.jpg" alt="Motion Map Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 The user can pull out a map of their surroundings with their right hand 
@@ -79,7 +79,7 @@ Mimic tabletop games with tokens
 - Release: Teleport to that position
 - Like moving a chess piece on a board
 
-<img src="hw1-slide5.jpg" alt="Motion Map Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide5.jpg" alt="Motion Map Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ No motion sickness
@@ -103,7 +103,7 @@ What we want to test:
 
 ## Idea 3: Move the World
 
-<img src="hw1-slide6.jpg" alt="Move the World Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide6.jpg" alt="Move the World Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 Instead of walking, the user "grabs" the world and pulls themselves forward.
@@ -118,7 +118,7 @@ Simple, intuitive control
 - Like climbing a rope or pulling yourself along a rail
 - Release and repeat for continuous movement
 
-<img src="hw1-slide7.jpg" alt="Move the World Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide7.jpg" alt="Move the World Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ Doesn't require physical space
@@ -167,11 +167,11 @@ Presented: Week 2 (December 9, 2024)
 By Fatemeh Shirvani & Amélien Le Meur
 
 ## 📥 Download Full Presentation
-<a href="Lecture-HW2-WorldInHand.pdf" download>Download PDF (Lecture-HW2-WorldInHand.pdf)</a>
+<a href="homework/hw2/Lecture-HW2-WorldInHand.pdf" download>Download PDF (Lecture-HW2-WorldInHand.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-<img src="hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ## 🎯 Selected Technique: World-in-Hand
 
@@ -189,7 +189,7 @@ After brainstorming three locomotion ideas in HW1, we selected **"Move the World
 
 ## 💡 Core Concept
 
-<img src="hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Main Idea
 Instead of moving the user through the world, we move the world toward the user.
@@ -203,9 +203,9 @@ Instead of moving the user through the world, we move the world toward the user.
 
 ### Inspiration: How We Perceive the World
 
-<img src="hw2-slide3.jpg" alt="360-degree perception" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide3.jpg" alt="360-degree perception" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-<img src="hw2-slide4.jpg" alt="Pac-Man 360 example" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide4.jpg" alt="Pac-Man 360 example" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 We're inspired by 360-degree games where the environment wraps around 
 the player, creating immersion without requiring physical movement.
@@ -214,7 +214,7 @@ the player, creating immersion without requiring physical movement.
 
 ## 🎮 Interaction Design
 
-<img src="hw2-slide6.jpg" alt="Forward Movement and Jump" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide6.jpg" alt="Forward Movement and Jump" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Forward Movement
 
@@ -247,7 +247,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-<img src="hw2-slide7.jpg" alt="Speed Control and Steering" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide7.jpg" alt="Speed Control and Steering" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Speed Control
 
@@ -475,52 +475,23 @@ Conduct a user study with yourself + 2 other participants (3 total).
     type: 'file',
     content: `# Lecture Homework 4: Final Presentation (15 Points)
 
-## Presentation Structure (20 minutes total)
+## Download Full Presentation
+<a href="homework/Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
 
-### Part 1: Presentation (5-10 minutes)
-**Concept:**
-- What is your locomotion technique?
-- Why did you choose this approach?
+<img src="homework/hw4/hw4-slide1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide3.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide8.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-**Implementation:**
-- How did you implement it?
-- What challenges did you face?
-- How did you solve them?
 
-**Evaluation:**
-- How did participants perform?
-- What did you learn from user evaluation?
-
-### Part 2: Demo (5 minutes)
-- Live demonstration for everyone to try
-
-### Part 3: Discussion (5 minutes)
-- Q&A and feedback
-
-## My Presentation
-
-### Concept
-[Document your main idea and rationale]
-
-### Implementation Details
-[Technical approach, code snippets, architecture]
-
-### Challenges & Solutions
-| Challenge | Solution |
-|-----------|----------|
-| | |
-| | |
-
-### Evaluation Summary
-[Key findings from user testing]
-
-### Demo Plan
-[How will you demonstrate your technique?]
-
-## Preparation
-- APK shared by January 28th
-- Install before January 29th
-- Presentation slides ready`
+    `
   },
   '/labs': {
     type: 'dir',
@@ -544,10 +515,10 @@ Create your own online blog with any tool you prefer.
 ## My Blog Setup
 
 ### Platform Choice
-[Which platform did you choose? Why?]
+We chose GitHub Pages because of the potential of things to do with it.
 
 ### Blog URL
-[Your blog URL here]
+https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/
 
 ### Setup Process
 [Document the steps you took]
