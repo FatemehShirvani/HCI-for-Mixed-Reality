@@ -519,21 +519,7 @@ We chose GitHub Pages because of the potential of things to do with it.
 
 ### Blog URL
 https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/
-
-### Setup Process
-[Document the steps you took]
-
-
-### Screenshots
-[Add screenshots of your blog]
-
-## Documentation Tips
-Remember: Don't just write results and upload code!
-Document your process:
-- How did you approach this task?
-- What problems did you encounter?
-- How did you overcome them?
-- What should others know that you didn't initially?`
+`
   },
   '/labs/hw2.md': {
     type: 'file',
@@ -547,15 +533,15 @@ Set up Unity3D environment following the tutorial.
 2. Bonus (if fast): https://learn.unity.com/tutorial/beginner-walkthroughs
 3. Bonus: Add IP-Paris "flavor" to your project
 
-## My Setup
 
 ### Unity Version
 We installed Unity 6.2 which was the most recent version at the time.
 
 ### Installation Process
-<img src="labs/lab2/lab3-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab2/lab3-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-
+<img src="labs/lab2/lab2-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Here is the (empty) installs menu. We click on install, then choose tthe latest verssion: unity 6.2. the install starts (top right corner)
+<img src="labs/lab2/lab2-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+When the install is done, the editor appears and we can now suse it. Done ! 
 
 ### Challenges & Solutions
 We had a trouble syncing up at first because we didnt download exactly the same version as one another, so we had to redownload everything. 
@@ -571,28 +557,126 @@ The installation also made one of our laptop crash;
     type: 'file',
     content: `# Lab Homework 3: Unity Roll-A-Ball (15 Points)
 <img src="labs/lab3/lab3-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We start with an empty scene.
 <img src="labs/lab3/lab3-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-3.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-8.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-<img src="labs/lab3/lab3-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+First, we create a floor on which everything will be placed
 
+<img src="labs/lab3/lab3-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We add a ball on the floor.
+
+<img src="labs/lab3/lab3-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We change the lighting so that it's warmer, we select a nice orange.
+
+<img src="labs/lab3/lab3-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We create a material & apply it to the ball to make it blue & shiny.
+
+<img src="labs/lab3/lab3-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+The ball now rolls with the user's inputs with a playercontroller script.
+
+<img src="labs/lab3/lab3-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We make it so the camera follows the ball with a cameracontroller script.
+
+<img src="labs/lab3/lab3-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added walls all around the arena to prevent the ball from falling.
+
+<img src="labs/lab3/lab3-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We create collectible coins around the arena.
+
+<img src="labs/lab3/lab3-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added a UI element thatt counts the amount of coins the player has collected.
+
+<img src="labs/lab3/lab3-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+When all the collectibles have been collected, the game ends and a "you win screen" appears.
+
+<img src="labs/lab3/lab3-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Skipping forward a little bit, we now have obstacles, the purples ones being moveable. We also added an AI enemy that follows the play and makes them lose when they touch each other.
+
+### Challenges & Solutions
+This tutorial was pretty straightforward, the only issue was with the player controller which wouldn't work only because one of the letters was not capitalized.
   `},
   '/labs/hw4.md': {
     type: 'file',
     content: `# Lab Homework 4: Unity Roll-A-Ball in VR (15 Points)
+<img src="labs/lab4/lab4-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We start by switching the platform to android, and we install the Meta All-in-one SDK
 
-## Assignment
-Adapt Roll-A-Ball into a VR version with selection techniques.
+<img src="labs/lab4/lab4-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We then install the XR plugin management
 
+<img src="labs/lab4/lab4-3.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We import the package created from the roll a ball assignment.
+
+<img src="labs/lab4/lab4-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab4/lab4-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We import the assets from tdhe X Interaction Toolkit, then added the XRI default input actions as actions assets and changed the normal camera.
+
+
+<img src="labs/lab4/lab4-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We Change palyer input and use XRI Default Input action instead of input action managment that was previously assigned.
+We also change Active Input Handling to Input System Package (New) 
+
+<img src="labs/lab4/lab4-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We have this error. The the game runned successfully and we could control the ball with left joystick as intended, but the camera was up and we did not have control to always see the ball 
+
+<img src="labs/lab4/lab4-8.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We make the camera xr origin a child of player so that they follow eacher other.
+We freeze the rotation in x and z directions to prevent the rotation of the camera with the ball.
+
+<img src="labs/lab4/lab4-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We update the FixedUpdate() function so the ball turns where the player is looking
+
+<img src="labs/lab4/lab4-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+But making the xr origin a child of Player was not a good idea because the world was following us. For example, when we were looking upward, it was like the world was rotating so we make sure xr origin is not a child of player and player is not a child of xr origin and we make the xr origin follow the ball with a new script FollowBallPosition
+
+<img src="labs/lab4/lab4-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+we assign a player to the script.
+
+<img src="labs/lab4/lab4-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We change the logic to move when we hold the trigger and joystick and follow the head direction
+
+<img src="labs/lab4/lab4-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We move the ball a bit in front of the camera to fill,  like a chasing camera and that always sees the ball.
+Now the game is functioning well: we roll around the scene and follow the ball.
+
+<img src="labs/lab4/lab4-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added left and right hand controllers as a child of XR origin.
+Added XR Grab Interactable to pickup prefab and turned off trigger check box.
+now the problem is that we never enter in trigger because we unchecked that box but it is fine since we want to grab from now on not trigger and we should change them 
+
+
+# Tracking controller positions
+
+<img src="labs/lab4/lab4-15.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added tracked pose driver component to track the position and rotation of the controller in vr environment and assigned the refrence to left and right controller
+
+<img src="labs/lab4/lab4-17.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We turned them to match the real controllers 
+
+# Grabbing PickUp Objects
+
+<img src="labs/lab4/lab4-18.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Right now the ball is colliding with boxes and pushes them away since they are rigid bodies. 
+
+<img src="labs/lab4/lab4-19.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added a layer grabbable
+
+<img src="labs/lab4/lab4-20.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Unchecked the collision between  grabbable layer and Player layer which is the layer of Player.
+
+# Raycasting
+
+<img src="labs/lab4/lab4-21.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We tried to add xr ray interactor to each hand but got this error
+
+<img src="labs/lab4/lab4-22.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+So we created a Ray child for each hand and added the components  XR Ray Interactor, XR Interactor Line Visual to them
+
+<img src="labs/lab4/lab4-23.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab4/lab4-24.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Now we have rays coming from each controller.
+
+<img src="labs/lab4/lab4-25.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+For selecting we then added a XR Simple Interactable to enemy game obj.
 ## Tasks
 1. Implement Roll-A-Ball in VR
 2. Adapt for VR environment (check Lab3 on Moodle)
