@@ -479,9 +479,9 @@ By Fatemeh Shirvani & Amélien Le Meur
 ## 📥 Download Presentation & Demo
 <a href="Lecture-HW4-FinalPresentation.pdf" download>Download PDF Presentation</a>
 
-**🎥 Demo Video:** 
-<a href="hw4-demo-video.mp4" download>Download Demo Video (Coming Soon)</a>
-*Video will be added once uploaded*
+<video width="320" height="240" controls>
+  <source src="demo.mp4" type="video/mp4">
+</video>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -731,8 +731,6 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 **Objective:** Create a course blog to document our HCI for Mixed Reality journey
 
-**Due Date:** Week 1  
-**Status:** Complete
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
