@@ -173,7 +173,7 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 <img src="hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-## 🎯 Selected Technique: World-in-Hand
+## Selected Technique: World-in-Hand
 
 After brainstorming three locomotion ideas in HW1, we selected **"Move the World"** 
 (now called "World-in-Hand") as our technique to implement for the parkour project.
@@ -187,7 +187,7 @@ After brainstorming three locomotion ideas in HW1, we selected **"Move the World
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 💡 Core Concept
+## Core Concept
 
 <img src="hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
@@ -300,7 +300,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📊 Expected Advantages
+## Expected Advantages
 
 ✓ **Reduced motion sickness** - User's vestibular system not confused  
 ✓ **Intuitive controls** - Familiar zoom/map manipulation gesture  
@@ -346,7 +346,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🛠️ Implementation Plan
+## Implementation Plan
 
 ### Technical Requirements
 
@@ -376,7 +376,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎓 Presentation Reflection
+## Presentation Reflection
 
 ### What We Learned
 
@@ -544,7 +544,7 @@ From HW1, we explored splitting the frame into sequential views like animation f
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🛠️ Implementation: Technical Challenges
+## Implementation: Technical Challenges
 
 ### Overview
 Implementing ski pole locomotion required solving 5 major challenges:
@@ -599,7 +599,7 @@ _velocity += headForward * gain;
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎯 Challenge 2: Tip Ground Detection
+## Challenge 2: Tip Ground Detection
 
 <img src="hw4-slide6.jpg" alt="Ground Detection Problem" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
@@ -656,7 +656,7 @@ _velocity += headForward * gain;
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🚀 Advanced Features: Airborne, Jumping, Braking
+## Advanced Features: Airborne, Jumping, Braking
 
 <img src="hw4-slide9.jpg" alt="Airborne Motion and Braking" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
@@ -711,10 +711,10 @@ _velocity += headForward * gain;
 
 We successfully implemented **ski pole locomotion** for VR parkour:
 
-✅ **Solved technical challenges** - Push detection, ground following, steering, physics  
-✅ **Positive user feedback** - Easy to use, fun, low motion sickness  
-✅ **Works in parkour context** - Handles curves, slopes, elevated coins  
-✅ **Better than Frame Split** - More engaging, more controllable
+**Solved technical challenges** - Push detection, ground following, steering, physics  
+**Positive user feedback** - Easy to use, fun, low motion sickness  
+**Works in parkour context** - Handles curves, slopes, elevated coins  
+**Better than Frame Split** - More engaging, more controllable
 
 **Thank you for following our journey!** ⛷️`
   },
@@ -727,16 +727,16 @@ We successfully implemented **ski pole locomotion** for VR parkour:
     content: `# Lab Homework 1: Setup Blog (5 Points)
 By Fatemeh Shirvani & Amélien Le Meur
 
-## ✅ Assignment Completed
+## Assignment Completed
 
 **Objective:** Create a course blog to document our HCI for Mixed Reality journey
 
 **Due Date:** Week 1  
-**Status:** ✅ Complete
+**Status:** Complete
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🌐 Live Blog
+## Live Blog
 
 **URL:** https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/
 
@@ -744,7 +744,7 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 💡 Concept: Terminal-Style Blog
+## Concept: Terminal-Style Blog
 
 Instead of a traditional blog, we created an **interactive terminal interface** 
 where visitors can explore our coursework using Unix-style commands.
@@ -759,7 +759,7 @@ where visitors can explore our coursework using Unix-style commands.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### Technologies Used
 
@@ -783,7 +783,7 @@ where visitors can explore our coursework using Unix-style commands.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📁 File Structure
+## File Structure
 
 Our blog follows a Unix-like directory structure:
 
@@ -808,7 +808,7 @@ Our blog follows a Unix-like directory structure:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎨 Design Choices
+## Design Choices
 
 ### Visual Style
 
@@ -844,7 +844,7 @@ Our blog follows a Unix-like directory structure:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🚀 Setup Process
+## Setup Process
 
 ### Step 1: Design & Planning
 - Researched terminal blog examples
@@ -882,33 +882,33 @@ Our blog follows a Unix-like directory structure:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## ✅ Features Implemented
+## Features Implemented
 
 ### Core Functionality
-✅ Command-line interface  
-✅ File system navigation  
-✅ Markdown content rendering  
-✅ Command history  
-✅ Tab completion  
-✅ Help system  
-✅ Responsive design
+Command-line interface  
+File system navigation  
+Markdown content rendering  
+Command history  
+Tab completion  
+Help system  
+Responsive design
 
 ### Content Management
-✅ Lecture homework sections  
-✅ Lab homework sections  
-✅ Course information  
-✅ Documentation (README)
+Lecture homework sections  
+Lab homework sections  
+Course information  
+Documentation (README)
 
 ### Advanced Features
-✅ Embedded images support  
-✅ PDF downloads  
-✅ Video placeholders  
-✅ Custom styling  
-✅ No auto-scroll (user-friendly reading)
+Embedded images support  
+PDF downloads  
+Video placeholders  
+Custom styling  
+No auto-scroll (user-friendly reading)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎯 How to Use the Blog
+## How to Use the Blog
 
 ### For Visitors:
 
@@ -946,7 +946,7 @@ $ cat about.txt
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📊 Benefits of This Approach
+## Benefits of This Approach
 
 ### For the Course
 
@@ -965,7 +965,7 @@ $ cat about.txt
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎓 Lessons Learned
+## Lessons Learned
 
 ### Technical Skills Gained
 
@@ -1280,440 +1280,91 @@ const fileSystem = {
   '/labs': { type: 'directory' },
   '/labs/hw1.md': {
     type: 'file',
-    content: \`# Lab Homework 1...\`
-  }
-};
+    content: `# Lab Homework 1: Setup Blog (5 Points)
+By Fatemeh Shirvani & Amélien Le Meur
 
-// State Management
-let currentPath = '/';
-let commandHistory = [];
-let historyIndex = -1;
+## Assignment Completed
 
-// Get DOM elements
-const termInput = document.getElementById('input');
-const termOutput = document.getElementById('output');
+**Objective:** Create a course blog to document HCI for Mixed Reality coursework
+
+**Live URL:** https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/  
+**Repository:** https://github.com/FatemehShirvani/HCI-for-Mixed-Reality
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Design Choice: Terminal Interface
+
+Instead of a traditional blog, we created an interactive terminal where visitors explore coursework using Unix-style commands.
+
+**Why Terminal?**
+- Unique and memorable
+- Fits technical course theme  
+- Interactive exploration
+- Clean, organized structure
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Technical Implementation
+
+**Stack:**
+- HTML5 + CSS3 + Vanilla JavaScript
+- GitHub Pages hosting
+- No frameworks or dependencies
+
+**Features:**
+- Command-line interface (ls, cd, cat, tree, pwd, clear, help)
+- File system navigation
+- Command history (arrow keys)
+- Tab completion
+- Markdown rendering
+- Image embedding
+- PDF downloads
+
+**File Structure:**
 \`\`\`
-
-**Command Processing:**
-
-\`\`\`javascript
-function processCommand(input) {
-    const trimmed = input.trim();
-    if (!trimmed) return '';
-
-    // Add to history
-    commandHistory.push(trimmed);
-    historyIndex = commandHistory.length;
-
-    // Parse command
-    const parts = trimmed.split(' ');
-    const command = parts[0];
-    const args = parts.slice(1);
-
-    // Execute command
-    switch(command) {
-        case 'ls':
-            return executeLS(args[0] || currentPath);
-        case 'cd':
-            return executeCD(args[0] || '/');
-        case 'cat':
-            return executeCAT(args[0]);
-        case 'pwd':
-            return currentPath;
-        case 'tree':
-            return showTree();
-        case 'clear':
-            termOutput.innerHTML = '';
-            return '';
-        case 'help':
-            return showHelp();
-        default:
-            return \`Command not found: \${command}\\nType 'help' for available commands.\`;
-    }
-}
-\`\`\`
-
-**LS Command (List Directory):**
-
-\`\`\`javascript
-function executeLS(path) {
-    const items = new Set();
-    
-    // Normalize path
-    const targetPath = path === currentPath ? currentPath : resolvePath(path);
-    
-    // Find items in directory
-    for (const key in fileSystem) {
-        if (key.startsWith(targetPath) && key !== targetPath) {
-            const remainder = key.substring(targetPath.length);
-            const firstPart = remainder.split('/').filter(Boolean)[0];
-            
-            if (firstPart) {
-                items.add(firstPart);
-            }
-        }
-    }
-    
-    // Format output
-    const formatted = Array.from(items).map(item => {
-        const fullPath = targetPath === '/' ? '/' + item : targetPath + '/' + item;
-        const isDir = fileSystem[fullPath] && fileSystem[fullPath].type === 'directory';
-        
-        if (isDir) {
-            return \`<span style="color: var(--cyan); font-weight: bold;">\${item}/</span>\`;
-        } else {
-            return item;
-        }
-    });
-    
-    return formatted.join('  ');
-}
-\`\`\`
-
-**CD Command (Change Directory):**
-
-\`\`\`javascript
-function executeCD(newPath) {
-    if (!newPath || newPath === '~') {
-        currentPath = '/';
-        return '';
-    }
-    
-    // Handle current directory
-    if (newPath === '.') {
-        return '';
-    }
-    
-    // Handle parent directory
-    if (newPath === '..') {
-        if (currentPath === '/') return '';
-        const parts = currentPath.split('/').filter(Boolean);
-        parts.pop();
-        currentPath = parts.length > 0 ? '/' + parts.join('/') : '/';
-        return '';
-    }
-    
-    // Resolve path
-    const targetPath = resolvePath(newPath);
-    
-    // Validate directory exists
-    if (fileSystem[targetPath] && fileSystem[targetPath].type === 'directory') {
-        currentPath = targetPath;
-        return '';
-    } else {
-        return \`cd: no such directory: \${newPath}\`;
-    }
-}
-
-function resolvePath(path) {
-    if (path.startsWith('/')) {
-        return path; // Absolute path
-    } else {
-        // Relative path
-        return currentPath === '/' ? '/' + path : currentPath + '/' + path;
-    }
-}
-\`\`\`
-
-**CAT Command (Display File):**
-
-\`\`\`javascript
-function executeCAT(filename) {
-    if (!filename) {
-        return 'cat: missing filename';
-    }
-    
-    const filePath = resolvePath(filename);
-    
-    if (!fileSystem[filePath]) {
-        return \`cat: \${filename}: No such file\`;
-    }
-    
-    if (fileSystem[filePath].type !== 'file') {
-        return \`cat: \${filename}: Is a directory\`;
-    }
-    
-    const content = fileSystem[filePath].content;
-    
-    // Render markdown files
-    if (filename.endsWith('.md')) {
-        return renderMarkdown(content);
-    }
-    
-    return content;
-}
-\`\`\`
-
-**Markdown Rendering:**
-
-\`\`\`javascript
-function renderMarkdown(text) {
-    let html = text;
-    
-    // Headers
-    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
-    
-    // Bold
-    html = html.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>');
-    
-    // Italic
-    html = html.replace(/\\*(.+?)\\*/g, '<em>$1</em>');
-    
-    // Links
-    html = html.replace(/\\[(.+?)\\]\\((.+?)\\)/g, 
-        '<a href="$2" target="_blank">$1</a>');
-    
-    // Images (with styling)
-    html = html.replace(/<img src="([^"]+)"[^>]*>/g, 
-        '<img src="$1" style="max-width:100%; margin:20px 0; border:2px solid var(--border); border-radius:8px;">');
-    
-    // Code blocks
-    html = html.replace(/\`\`\`([\\s\\S]*?)\`\`\`/g, 
-        '<pre><code>$1</code></pre>');
-    
-    // Inline code
-    html = html.replace(/\`([^\`]+)\`/g, '<code>$1</code>');
-    
-    // Line breaks
-    html = html.replace(/\\n/g, '<br>');
-    
-    return html;
-}
-\`\`\`
-
-**Event Handlers:**
-
-\`\`\`javascript
-// Keyboard input handler
-termInput.addEventListener('keydown', (e) => {
-    // Arrow Up - Previous command
-    if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (historyIndex > 0) {
-            historyIndex--;
-            termInput.value = commandHistory[historyIndex];
-        }
-    }
-    
-    // Arrow Down - Next command
-    else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (historyIndex < commandHistory.length - 1) {
-            historyIndex++;
-            termInput.value = commandHistory[historyIndex];
-        } else {
-            historyIndex = commandHistory.length;
-            termInput.value = '';
-        }
-    }
-    
-    // Tab - Autocomplete
-    else if (e.key === 'Tab') {
-        e.preventDefault();
-        autocomplete();
-    }
-    
-    // Enter - Execute command
-    else if (e.key === 'Enter') {
-        const command = termInput.value;
-        displayCommand(command);
-        const output = processCommand(command);
-        if (output) displayOutput(output);
-        termInput.value = '';
-    }
-});
-
-// Display functions
-function displayCommand(cmd) {
-    const line = document.createElement('div');
-    line.className = 'terminal-line command';
-    line.innerHTML = \`<span class="prompt">$</span> \${cmd}\`;
-    termOutput.appendChild(line);
-}
-
-function displayOutput(text) {
-    const line = document.createElement('div');
-    line.className = 'terminal-line';
-    line.innerHTML = text;
-    termOutput.appendChild(line);
-    
-    // No auto-scroll - let users read freely
-}
-
-// Tab completion
-function autocomplete() {
-    const input = termInput.value;
-    const parts = input.split(' ');
-    const partial = parts[parts.length - 1];
-    
-    const items = getDirectoryItems(currentPath);
-    const matches = items.filter(item => item.startsWith(partial));
-    
-    if (matches.length === 1) {
-        parts[parts.length - 1] = matches[0];
-        termInput.value = parts.join(' ');
-    } else if (matches.length > 1) {
-        displayOutput('Matches: ' + matches.join('  '));
-    }
-}
-
-function getDirectoryItems(path) {
-    const items = [];
-    for (const key in fileSystem) {
-        if (key.startsWith(path) && key !== path) {
-            const remainder = key.substring(path.length);
-            const firstPart = remainder.split('/').filter(Boolean)[0];
-            if (firstPart && !items.includes(firstPart)) {
-                items.push(firstPart);
-            }
-        }
-    }
-    return items;
-}
+/
+├── lectures/     (homework presentations)
+├── labs/         (lab assignments)
+├── about.txt     (course info)
+└── README.md     (documentation)
 \`\`\`
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🔧 Challenges Solved
+## Development Process
 
-### 1. Path Resolution Logic
-
-**Challenge:** Handling complex path navigation (\`cd ../../../\`, \`cd ./dir\`, etc.)
-
-**Solution:**
-\`\`\`javascript
-function resolvePath(path) {
-    if (path.startsWith('/')) {
-        return path; // Absolute path - use as-is
-    }
-    
-    // Relative path - combine with current
-    let fullPath = currentPath;
-    const parts = path.split('/');
-    
-    for (const part of parts) {
-        if (part === '..') {
-            // Go up one level
-            const segments = fullPath.split('/').filter(Boolean);
-            segments.pop();
-            fullPath = '/' + segments.join('/');
-        } else if (part && part !== '.') {
-            // Go down into directory
-            fullPath = fullPath === '/' ? '/' + part : fullPath + '/' + part;
-        }
-    }
-    
-    return fullPath || '/';
-}
-\`\`\`
-
-### 2. Mobile Keyboard Behavior
-
-**Challenge:** iOS Safari zooms on input focus if font-size <16px
-
-**Solution:**
-\`\`\`css
-.term-input {
-    font-size: 16px; /* Critical for iOS */
-}
-\`\`\`
-
-### 3. Auto-Scroll Annoyance
-
-**Challenge:** Terminal auto-scrolled after every command, preventing users from reading
-
-**Solution:** Removed auto-scroll entirely
-\`\`\`javascript
-// Before:
-setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
-
-// After:
-// (removed - users scroll manually)
-\`\`\`
-
-### 4. Tab Key Capture
-
-**Challenge:** Browser's default Tab behavior (focus next element) conflicts with autocomplete
-
-**Solution:**
-\`\`\`javascript
-if (e.key === 'Tab') {
-    e.preventDefault(); // Stop browser default
-    autocomplete();     // Run our autocomplete
-}
-\`\`\`
+1. **Design & Planning** - Researched terminal blog examples
+2. **Development** - Built HTML, CSS, and JavaScript
+3. **Content Organization** - Created directory structure
+4. **Deployment** - Pushed to GitHub Pages
+5. **Testing** - Verified all commands work
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📊 Performance & Optimization
+## Lessons Learned
 
-**Load Time:** <1 second (tested on 3G connection)
+**Technical Skills:**
+- Command parsing and interpretation
+- State management
+- DOM manipulation
+- Terminal aesthetics with CSS
 
-**Optimizations Applied:**
-- ✅ No external dependencies (React, jQuery, etc.)
-- ✅ Minimal CSS (under 5KB)
-- ✅ Vanilla JavaScript (under 15KB)
-- ✅ Optimized images (<300KB each)
-- ✅ No build process required
-- ✅ Static files only (fast GitHub Pages delivery)
-
-**Browser Compatibility:**
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile browsers (iOS Safari, Chrome Android)
+**Design Insights:**
+- File system metaphor is intuitive
+- Command history improves UX
+- Simple is better than complex
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📈 Future Enhancements
+## Status
 
-**Potential additions:**
-- 🔍 Search command to find content
-- 📊 Progress tracker (homework completion)
-- 🎨 Theme switcher (green/amber/white terminals)
-- 💬 Comment system for feedback
-- 📱 Better mobile touch controls
-- ⌨️ Vim-style navigation keys
-- 🔗 Direct links to specific homework
-- 📤 Export functionality (download as PDF)
+[x] Course blog created  
+[x] GitHub Pages deployed  
+[x] Interactive interface working  
+[x] Content structure organized  
+[x] Documentation complete
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-## ✅ Assignment Completion Checklist
-
-- [x] Created course blog
-- [x] Chose hosting platform (GitHub Pages)
-- [x] Set up repository
-- [x] Implemented interactive interface
-- [x] Organized content structure
-- [x] Deployed to public URL
-- [x] Tested functionality
-- [x] Documented setup process
-- [x] Ready for ongoing updates
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-## 🎉 Conclusion
-
-We successfully created a unique, interactive terminal-style blog for documenting 
-our HCI for Mixed Reality coursework. The blog is:
-
-✅ **Live** - https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/  
-✅ **Functional** - All commands working  
-✅ **Organized** - Clear file structure  
-✅ **Documented** - README and help system  
-✅ **Portfolio-ready** - Professional presentation
-
-**This terminal blog serves as both a course requirement and a demonstration 
-of our web development capabilities!**
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**Lab HW1 Status:** ✅ COMPLETE  
-**Next:** Lab HW2 - Unity Environment Setup`
+**Assignment Status:** COMPLETE`
   },
   '/labs/hw2.md': {
     type: 'file',
