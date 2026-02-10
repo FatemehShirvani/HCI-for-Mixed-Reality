@@ -523,8 +523,6 @@ https://fatemehshirvani.github.io/HCI-for-Mixed-Reality/
 ### Setup Process
 [Document the steps you took]
 
-### Challenges
-[Any issues you encountered?]
 
 ### Screenshots
 [Add screenshots of your blog]
@@ -552,76 +550,42 @@ Set up Unity3D environment following the tutorial.
 ## My Setup
 
 ### Unity Version
-[Which version did you install?]
+We installed Unity 6.2 which was the most recent version at the time.
 
 ### Installation Process
-[Document your setup steps]
+<img src="labs/lab2/lab3-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab2/lab3-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-### First Project
-[What did you create?]
-
-### Screenshots
-[Add screenshots of your Unity environment]
-
-### IP-Paris Modifications
-[If you added IP-Paris flavor, describe it here]
 
 ### Challenges & Solutions
-[What problems did you face?]
-[How did you solve them?]
+We had a trouble syncing up at first because we didnt download exactly the same version as one another, so we had to redownload everything. 
+The installation also made one of our laptop crash;
 
 ## Resources
 - Unity Learn: https://learn.unity.com/
 - Unity Documentation
-- IP-Paris branding guidelines (if applicable)`
+
+`
   },
   '/labs/hw3.md': {
     type: 'file',
     content: `# Lab Homework 3: Unity Roll-A-Ball (15 Points)
+<img src="labs/lab3/lab3-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-3.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-8.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab3/lab3-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-## Assignment
-Create your first Unity application following the Roll-A-Ball tutorial.
-
-## Tutorial
-https://learn.unity.com/project/roll-a-ball
-
-## Requirements
-- Complete the full Roll-A-Ball tutorial
-- Document your learning process
-- Bonus: Add IP-Paris "flavor"
-
-## My Implementation
-
-### Learning Journey
-[What did you learn from this tutorial?]
-
-### Key Concepts Covered
-- Player movement
-- Camera control
-- Collectibles
-- UI elements
-- [Add others you learned]
-
-### Screenshots/Video
-[Show your completed Roll-A-Ball game]
-
-### IP-Paris Customization
-[How did you customize it?]
-
-### Code Highlights
-[Any interesting code snippets you wrote?]
-
-\`\`\`csharp
-// Example: Your player movement code
-\`\`\`
-
-### Challenges
-[What was difficult?]
-[How did you debug issues?]
-
-## Reflection
-[What will you apply from this tutorial to future projects?]`
-  },
+  `},
   '/labs/hw4.md': {
     type: 'file',
     content: `# Lab Homework 4: Unity Roll-A-Ball in VR (15 Points)
