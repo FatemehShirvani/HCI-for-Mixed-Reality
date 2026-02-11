@@ -1093,69 +1093,1174 @@ For selecting we then added a XR Simple Interactable to enemy game obj.
   },
   '/labs/hw5.md': {
     type: 'file',
-    content: `# Lab Homework 5: Locomotion Technique Implementation (30 Points)
+    content: `# Lab Homework 5: Ski Pole Locomotion Implementation
+By Fatemeh Shirvani & Amélien Le Meur
 
-## Assignment
-Implement your locomotion technique in Unity in the provided parkour scene.
+<a href="https://github.com/FatemehShirvani/HCI-for-Mixed-Reality" target="_blank">GitHub Repository</a>
 
-## Requirements
-- Implement in the provided scene
-- Upload code to GitHub
-- Create demonstration video
-- Bonus: Add IP-Paris "flavor"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## My Implementation
+## Overview
 
-### Locomotion Concept
-[Restate your chosen locomotion technique]
+We implemented a **ski pole locomotion technique** for the VR parkour scene using Unity 6 and Meta Quest 3. The user holds virtual ski poles and pushes against the ground to propel themselves forward, like cross-country skiing. The final implementation (V10) handles push detection, ground contact, slope physics, airborne mechanics, braking, and ramp-based jumping.
 
-### Implementation Details
+This page documents the **full iterative development process** — from our first broken prototype to the final working version, including every challenge we faced and how we solved it.
 
-#### Architecture
-[High-level overview of your code structure]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-#### Key Components
-[List main scripts/components]
+## Demo Video
 
-#### Code Structure
+<!-- PLACEHOLDER_VIDEO: Record a demo video of the final ski locomotion in action. Upload as labs/lab5/demo.mp4 or link to YouTube -->
+<p style="color: #facc15; border: 1px dashed #facc15; padding: 12px; border-radius: 8px;">📹 [Upload demo video here — labs/lab5/demo.mp4 or YouTube link]</p>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Architecture
+
+Our final implementation consists of one main script attached to the OVRCameraRig, plus a debug HUD and the existing PoleFollowHand scripts:
+
+| Script | Purpose | Attached To |
+|--------|---------|-------------|
+| SkiLocomotionV10.cs | Main locomotion controller | OVRCameraRig |
+| SkiDebugHUDV10.cs | In-VR debug display | World Space Canvas |
+| PoleFollowHand.cs | Makes poles follow controllers | LeftPole / RightPole |
+
+### Unity Hierarchy
+
+\`\`\`
+OVRCameraRig               ← Rigidbody + CapsuleCollider + SkiLocomotionV10
+├── SkiPoles
+│   ├── LeftPole            ← PoleFollowHand (hand = LeftHandAnchor)
+│   │   ├── Visual          ← Pole mesh
+│   │   └── Tip             ← Empty transform (NO Rigidbody, NO Collider)
+│   └── RightPole           ← PoleFollowHand (hand = RightHandAnchor)
+│       ├── Visual
+│       └── Tip             ← Empty transform (NO Rigidbody, NO Collider)
+└── TrackingSpace
+    ├── CenterEyeAnchor     ← HMD reference
+    ├── LeftHandAnchor
+    └── RightHandAnchor
+\`\`\`
+
+<!-- PLACEHOLDER_IMG_1: Screenshot of the Unity hierarchy panel showing this structure. Save as labs/lab5/hierarchy.png -->
+<img src="labs/lab5/hierarchy.png" alt="Unity hierarchy showing OVRCameraRig setup with poles" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+The poles are children of the hand anchors, with Tip transforms at the bottom of each pole for ground detection. A critical lesson: tips must be **plain Transforms** — no Rigidbodies, no Colliders. We learned this the hard way.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## The Development Journey: V1 → V10
+
+We went through **10 major iterations** to reach the final version. Each version solved specific problems but revealed new ones.
+
+### V1: The First Attempt (Broken)
+
+<!-- PLACEHOLDER_IMG_2: Screenshot of V1 Inspector showing original SkiLocomotion settings with the wrong values. Save as labs/lab5/v1-inspector.png -->
+<img src="labs/lab5/v1-inspector.png" alt="V1 Inspector showing original broken settings" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+Our initial implementation had three critical problems:
+
+**Problem 1: Ground detection never triggered.** The pole tips had their own Kinematic Rigidbodies and Capsule Colliders with a separate PoleTipContact script. The raycast distance was only 0.25m — far too short for VR where the tracking coordinate space doesn't match what you'd expect. The debug HUD always showed "Grounded: false".
+
+**Problem 2: Insane spinning.** We used AddTorque for steering with a yawTorqueGain of 18. The calculation was steerAngle × backSpeed × yawTorqueGain, which could produce values like 45° × 1 m/s × 18 = **810 torque**. The player spun wildly out of control.
+
+**Problem 3: Physics conflicts.** Having Kinematic Rigidbodies on the pole tips (which are children of hand-tracked transforms) caused unpredictable physics behavior.
+
+<!-- PLACEHOLDER_IMG_3: Screenshot of V1 debug HUD in VR showing "Grounded: false" on both tips. Save as labs/lab5/v1-debug.png -->
+<img src="labs/lab5/v1-debug.png" alt="Debug HUD showing Grounded: false" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### V2: Fixing the Fundamentals
+
+The first major rewrite tackled all three root causes:
+
+1. **Removed all physics components** from pole tips (Rigidbody, Capsule Collider, PoleTipContact). Tips became plain Transforms.
+2. **Replaced AddTorque** with velocity-direction steering.
+3. **Built ground detection** directly into the main script using SphereCast with 0.5m distance.
+
 \`\`\`csharp
-// Main locomotion script example
-public class MyLocomotion : MonoBehaviour
+// V2: Built-in ground detection via SphereCast
+if (Physics.SphereCast(tip.position + Vector3.up * 0.05f,
+    groundCheckRadius, Vector3.down, out hit,
+    groundCheckDistance, groundLayers))
 {
-    // Your code here
+    isGrounded = true;
 }
 \`\`\`
 
-### Technical Challenges
+**Result:** Ground detection finally worked! But movement was still unreliable — we had to push our hands extremely low, and even when grounded, the player barely moved. Cranking pushGain to 50 and minBackSpeed to 0.05 made it move, but then even tiny hand tremors caused unintended movement.
 
-| Challenge | Solution | Code Example |
-|-----------|----------|--------------|
-| | | |
-| | | |
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### Features Implemented
-- [ ] Basic movement through parkour course
-- [ ] Pass through all 4 banners
-- [ ] Collect ground-level coins
-- [ ] Collect elevated coins
-- [ ] Handle curves smoothly
-- [ ] Additional features: [list any extras]
+### V3–V4: Real Momentum & Independent Steering
 
-### Demo Video
-[Link to your demonstration video]
+V2 had a flat force model — every push gave the same speed boost. V3 introduced proper physics:
 
-### Screenshots
-[In-game screenshots showing your locomotion in action]
+- Speed builds with each push (momentum accumulation)
+- Faster/harder pushes = exponentially more speed
+- Higher minPushSpeed threshold (0.3 m/s) to ignore hand tremors
+- Natural deceleration when not pushing
 
-### GitHub Repository
-[Link to your complete project]
+V4 separated steering from head tracking and introduced trigger-based controls — you hold the trigger while pushing, which prevents accidental movement.
 
-## Documentation Process
-[How did you approach building this?]
-[What would you do differently next time?]
+**New problem discovered:** Steering was still tied to head direction. We wanted to turn with the poles, not by looking around.
 
-## IP-Paris Customization
-[If applicable, describe your IP-Paris modifications]`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### V5: Sound & Push Feedback
+
+<!-- PLACEHOLDER_IMG_4: Screenshot or photo showing VR testing with V5, ideally showing the debug HUD with momentum bar. Save as labs/lab5/v5-testing.png -->
+<img src="labs/lab5/v5-testing.png" alt="Testing V5 with momentum system" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+Key additions:
+- Direction became **independent from head** — only poles control turning
+- Each push **adds to current speed** rather than replacing it
+- Push sound plays on each stroke
+- Longer/faster pushes = more speed
+
+**New problem:** We realized the code couldn't detect body orientation. Without a hip tracker, we only have HMD + 2 controllers, which makes pure pole-based steering unreliable because users naturally look around while skiing.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### V7: Anchor/Pivot Steering (Experimental)
+
+We tried a completely different steering model inspired by real skiing: poles as **anchors** you pull yourself toward.
+
+- Both poles planted on the RIGHT → you curve right
+- Plant LEFT pole + push RIGHT → PIVOT around the left pole
+- The planted pole becomes the center of rotation
+
+\`\`\`
+        YOU
+         ↓
+    ←────●────→  (moving forward)
+        / \\
+       /   \\
+      ●     ●   ← poles planted here
+     LEFT  RIGHT
+
+If both poles to the RIGHT:
+  → Average anchor point is RIGHT of you
+  → You get pulled RIGHT as you push
+\`\`\`
+
+**Why we abandoned it:** Without a hip tracker, we couldn't reliably determine the player's body axis. Users look around while skiing, so the left/right classification of pole positions was incorrect whenever the head turned. The steering felt unpredictable and frustrating.
+
+**Decision:** We went back to head-direction-based steering but made it much more refined with a gradual RotateTowards and speed loss on turns.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### V8–V9: The VR Height Problem
+
+<!-- PLACEHOLDER_IMG_5: Screenshot of debug HUD showing tip height values far above ground. Save as labs/lab5/v8-height-debug.png -->
+<img src="labs/lab5/v8-height-debug.png" alt="Debug showing tip height values vs ground" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+We discovered a fundamental VR coordinate problem. The OVRCameraRig sits at floor level (Y ≈ 0), the HMD is ~1.6m above, hand controllers ~1.0m above. Our code had a playerHeight offset that made things worse.
+
+Pole tips were always too high to reach the ground, and users had to push their hands uncomfortably low.
+
+**Fix:** We removed the playerHeight assumption and switched to **tolerance-based detection**. Instead of checking exact ground contact, we raycast down from each tip and check if ground is within poleTipGroundTolerance (0.3m). This works regardless of user height or arm length.
+
+We also integrated the game systems in V9 — the original LocomotionTechnique.cs had an OnTriggerEnter that handled coins, banners, and tasks. We had to port this into our script. Without it, passing through the start banner didn't trigger the coin spawns.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### V10: The Final Version
+
+V10 brought together everything from V1–V9 and added slope physics, ramp jumping, and terrain-aware friction. This is the version we used for the final demo and user testing.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Core Systems — Final Code (V10)
+
+### 1. Push Detection: 3-State Machine
+
+The hardest problem was reliably detecting intentional push gestures vs. random hand movement. Simple trigger presses were too sensitive. Velocity-only detection was unreliable with shaky hands. We needed a multi-condition state machine.
+
+\`\`\`csharp
+private enum PushState { IDLE, WINDING_UP, GROUND_CONTACT }
+
+void ProcessHand(Transform hand, ref Vector3 prevPos, ref Vector3 prevVel,
+    ref PushState state, ref float pushImpulse, bool triggerHeld,
+    bool tipGrounded, Vector3 headPos, Vector3 headForward, string handName)
+{
+    Vector3 currentVel = (hand.position - prevPos) / Time.fixedDeltaTime;
+    Vector3 accelVec = (currentVel - prevVel) / Time.fixedDeltaTime;
+    float acceleration = accelVec.magnitude;
+
+    Vector3 handRelative = hand.position - headPos;
+    float forwardDist = Vector3.Dot(handRelative, headForward);
+
+    prevPos = hand.position;
+    prevVel = currentVel;
+
+    switch (state)
+    {
+        case PushState.IDLE:
+            pushImpulse = 0f;
+            if (triggerHeld && acceleration > accelerationThreshold
+                && forwardDist > minForwardDistance)
+            {
+                state = PushState.WINDING_UP;
+            }
+            break;
+
+        case PushState.WINDING_UP:
+            if (!triggerHeld)
+            {
+                state = PushState.IDLE;
+            }
+            else
+            {
+                float velAlong = Vector3.Dot(currentVel, headForward);
+                float backwardVel = Mathf.Max(0f, -velAlong);
+                pushImpulse += backwardVel * pushVelocityScale
+                    * Time.fixedDeltaTime;
+
+                if (tipGrounded)
+                {
+                    state = PushState.GROUND_CONTACT;
+                    float gain = Mathf.Min(pushPower + pushImpulse,
+                        maxPushGain);
+                    _velocity += headForward * gain;
+                    PlayPushSound();
+                }
+            }
+            break;
+
+        case PushState.GROUND_CONTACT:
+            if (!triggerHeld || !tipGrounded)
+            {
+                state = PushState.IDLE;
+            }
+            break;
+    }
+}
+\`\`\`
+
+**How it works:**
+- **IDLE:** Waiting. Requires trigger held + hand acceleration above threshold + hand in front of face.
+- **WINDING_UP:** Tracking the stroke. Accumulates impulse from backward hand velocity — harder/faster push = more impulse.
+- **GROUND_CONTACT:** Tip touches ground → apply force. Gain = pushPower (base) + accumulated impulse, capped at maxPushGain.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 2. Ground Detection
+
+Two separate ground detection systems — one for the player and one for each pole tip:
+
+\`\`\`csharp
+// Player ground: raycast from above player downward
+Vector3 rayStart = playerRb.position + Vector3.up * 1f;
+if (Physics.Raycast(rayStart, Vector3.down, out RaycastHit groundHit,
+    groundRayLength, groundLayers, QueryTriggerInteraction.Ignore))
+{
+    groundY = groundHit.point.y;
+    groundNormal = groundHit.normal;
+    slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+}
+
+// Pole tip: tolerance-based (works regardless of user height)
+if (Physics.Raycast(leftTip.position + Vector3.up * 0.5f, Vector3.down,
+    out RaycastHit tipHit, 2f, groundLayers,
+    QueryTriggerInteraction.Ignore))
+{
+    float tipHeight = leftTip.position.y - tipHit.point.y;
+    leftTipGrounded = tipHeight <= poleTipGroundTolerance;
+}
+\`\`\`
+
+**Critical detail:** QueryTriggerInteraction.Ignore is essential — without it, raycasts hit trigger colliders (coins, banners) and report wrong ground positions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 3. Steering
+
+After the failed V7 anchor experiment, we settled on **head-direction steering** with turn speed loss:
+
+\`\`\`csharp
+// Gradually steer velocity toward where user is looking
+if (!_isInAir && foundGround && _velocity.sqrMagnitude > 0.0001f)
+{
+    float maxRadians = turnResponsiveness * Mathf.Deg2Rad
+        * Time.fixedDeltaTime;
+    Vector3 targetVel = headForward * _velocity.magnitude;
+    _velocity = Vector3.RotateTowards(_velocity, targetVel,
+        maxRadians, 0f);
+}
+
+// Speed loss on turns (carving costs energy, like real skiing)
+if (isTurning && _velocity.sqrMagnitude > 0.0001f)
+{
+    float speedScale = 1f + (_velocity.magnitude
+        * turnSpeedLossSpeedFactor);
+    float turnLoss = frameTurnAngle * turnSpeedLossPerDegree
+        * speedScale;
+    float reducedSpeed = Mathf.Max(0f,
+        _velocity.magnitude - turnLoss);
+    _velocity = _velocity.normalized * reducedSpeed;
+}
+\`\`\`
+
+Turn detection uses a **windowed approach** — we measure heading change over turnAngleWindow (0.2s) and only count it as a turn if the change exceeds turnAngleThreshold (4°). This prevents jitter from counting as turning.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 4. Gravity, Slopes & Ground Following
+
+<!-- PLACEHOLDER_IMG_6: Screenshot showing the parkour course hills — one uphill and one downhill section. Save as labs/lab5/slopes.png -->
+<img src="labs/lab5/slopes.png" alt="Parkour course hills showing slope sections" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+Our early versions only moved horizontally, causing the player to sink into slopes. V10 projects movement onto the terrain surface:
+
+\`\`\`csharp
+// Slope acceleration (gravity component along slope)
+Vector3 slopeDown = Vector3.ProjectOnPlane(Vector3.down, groundNormal);
+slopeDown.y = 0f;
+if (slopeDown.sqrMagnitude > 0.001f) slopeDown.Normalize();
+float slopeFactor = Mathf.Sin(slopeAngle * Mathf.Deg2Rad);
+_velocity += slopeDown * (downhillAcceleration * slopeFactor
+    * Time.fixedDeltaTime);
+
+// Terrain-based friction
+float effectiveFriction = friction;           // base: 0.3
+if (goingUphill)
+    effectiveFriction = friction * uphillFrictionMultiplier;  // 2.5×
+else if (goingDownhill)
+    effectiveFriction = friction * 0.3f;                      // reduced
+\`\`\`
+
+**On ground:** Player Y is snapped to groundY every frame. Horizontal velocity follows the slope.
+
+**In air:** Unity's gravity is disabled. We apply custom gravity (15 m/s²) manually to vertical velocity. This gives full control over airborne feel.
+
+\`\`\`csharp
+if (_isInAir)
+{
+    _verticalVelocity -= customGravity * Time.fixedDeltaTime;
+    newPos += _velocity * Time.fixedDeltaTime;
+    newPos.y += _verticalVelocity * Time.fixedDeltaTime;
+
+    // Land when falling and reaching ground
+    if (foundGround && newPos.y <= groundY
+        && _verticalVelocity <= 0)
+    {
+        _isInAir = false;
+        _verticalVelocity = 0f;
+        newPos.y = groundY;
+    }
+}
+\`\`\`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 5. Ramp Jumping
+
+<!-- PLACEHOLDER_IMG_7: Screenshot of the ramp in the parkour scene with floating coins above. Save as labs/lab5/ramp.png -->
+<img src="labs/lab5/ramp.png" alt="Ramp with floating coins above" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+
+Some coins float in the air. We added a ramp and implemented automatic launch detection:
+
+\`\`\`csharp
+// Ramp launch: going uphill + fast enough + no ground ahead
+if (goingUphill && _currentSpeed >= minLaunchSpeed
+    && slopeAngle > 15f)
+{
+    Vector3 aheadPos = newPos + travelDir * 1.5f
+        + Vector3.up * 1f;
+    if (!Physics.Raycast(aheadPos, Vector3.down, 4f,
+        groundLayers, QueryTriggerInteraction.Ignore))
+    {
+        _isInAir = true;
+        _verticalVelocity = _lastSlopeForward.y * _currentSpeed
+            + rampLaunchBoost;
+    }
+}
+\`\`\`
+
+When going uphill fast enough on a steep slope (> 15°), we check if there's ground ahead. If not (ramp edge), launch into air. Vertical velocity comes from the slope's upward component plus a boost.
+
+\`\`\`
+┌─────────────┐                    ┌─────────────┐
+│  ON GROUND  │───── Launch ──────▶│   IN AIR    │
+│             │    (uphill+speed   │             │
+│ • Snap to Y │     +no ground     │ • Custom    │
+│ • Friction  │      ahead)        │   gravity   │
+│ • Slope acc │                    │ • 3D move   │
+└─────────────┘◀───── Land ────────└─────────────┘
+                  (ground found
+                   + falling
+                   + Y ≤ groundY)
+\`\`\`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### 6. Braking & Game Integration
+
+Braking is mapped to grip buttons:
+
+\`\`\`csharp
+bool leftGrip = OVRInput.Get(
+    OVRInput.Axis1D.PrimaryHandTrigger, leftController) > 0.5f;
+bool rightGrip = OVRInput.Get(
+    OVRInput.Axis1D.PrimaryHandTrigger, rightController) > 0.5f;
+if (leftGrip || rightGrip)
+    effectiveFriction = brakeFriction;  // 3.0 vs normal 0.3
+\`\`\`
+
+Game integration (coins, banners, tasks) is handled via OnTriggerEnter on the OVRCameraRig's Capsule Collider — the same approach as the original LocomotionTechnique.cs. We had to port this into our script since ParkourCounter reads stage from the locomotion script directly.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Summary of Challenges
+
+| # | Challenge | What Went Wrong | Solution |
+|---|-----------|----------------|----------|
+| 1 | Ground detection | Raycast 0.25m too short, tips never reached | Tolerance-based: tip within 0.3m = grounded |
+| 2 | Crazy spinning | AddTorque × 18 gain = 810 torque | Removed torque, velocity-direction steering |
+| 3 | Physics conflicts | Rigidbody + Collider on tips = chaos | Tips are plain Transforms, no physics |
+| 4 | No movement | Threshold too strict, gain too low | 3-state machine with impulse accumulation |
+| 5 | No momentum | Flat force model | Backward velocity accumulates into impulse |
+| 6 | Head-locked steering | Direction tied to gaze | RotateTowards + turn speed loss |
+| 7 | No body tracking | Can't detect body axis for V7 | Abandoned pole-steering, refined head steering |
+| 8 | VR height mismatch | Wrong coordinate assumptions | Tolerance-based detection, no height offset |
+| 9 | Sinking into hills | Horizontal-only movement | Project velocity onto slope, snap Y |
+| 10 | No airborne state | Can't jump off ramps | Custom gravity, ramp edge detection |
+| 11 | Coins not spawning | OnTriggerEnter was in old script | Ported game integration into our script |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Final Settings
+
+\`\`\`
+Push Detection:
+  Acceleration Threshold: 1.5 m/s²
+  Min Forward Distance:   0.05m
+  Trigger Threshold:      0.5
+
+Speed:
+  Push Power:         3.0 (base speed per push)
+  Push Velocity Scale: 1.2
+  Max Push Gain:       4.0
+  Max Speed:           10.0 m/s
+
+Friction:
+  Base:               0.3
+  Uphill Multiplier:  2.5×
+  Downhill:           0.3× base
+  Brake Friction:     3.0
+
+Turning:
+  Responsiveness:     120°/s
+  Angle Window:       0.2s
+  Angle Threshold:    4°
+  Speed Loss/Degree:  0.015
+
+Ramp Jump:
+  Min Launch Speed:   4.0 m/s
+  Launch Boost:       4.0
+  Custom Gravity:     15.0 m/s²
+
+Ground Detection:
+  Tip Tolerance:      0.3m
+  Ground Ray Length:   10m
+\`\`\`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Features Checklist
+
+- [x] Basic movement through parkour course
+- [x] Pass through all 4 banners
+- [x] Collect ground-level coins
+- [x] Collect elevated coins (via ramp jump)
+- [x] Handle curves smoothly
+- [x] Slope physics (uphill/downhill)
+- [x] Braking system (grip buttons)
+- [x] Ramp jumping
+- [x] Push sound effects
+- [x] Respawn system (B/Y button)
+- [x] Debug HUD for development
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## What We Learned
+
+**VR physics is not game physics.** Standard Unity physics (Rigidbody, AddForce, gravity) doesn't work well for VR locomotion. We had to disable Unity's gravity and implement our own, manually snap the player to ground, and use MovePosition instead of velocity-based movement.
+
+**Test on device constantly.** Many issues (height mismatch, ground detection, push sensitivity) only appeared on the actual Quest 3, not in the editor.
+
+**Iterative development is unavoidable.** 10 versions. Each one solved something but revealed the next problem. The final V10 is clean, but it took V1–V9's failures to know what "clean" means in VR locomotion.
+
+**User behavior breaks assumptions.** Our biggest surprise: users naturally look around while skiing. This broke pole-based steering (V7) completely — physically correct but unusable when you can't track the body.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Full Source Code: SkiLocomotionV10.cs
+
+Below is the complete final script.
+
+\`\`\`csharp
+using UnityEngine;
+
+public class SkiLocomotionV10 : MonoBehaviour
+{
+    public Vector3 HorizontalVelocity =>
+        new Vector3(_velocity.x, 0f, _velocity.z);
+    public bool IsInAir => _isInAir;
+    public float GroundY => _lastGroundY;
+    public bool HasGround => _hasGround;
+    public Vector3 GroundNormal => _lastGroundNormal;
+
+    [Header("=== Required References ===")]
+    public Rigidbody playerRb;
+    public Transform hmd;
+
+    [Header("=== Pole Tips ===")]
+    public Transform leftTip;
+    public Transform rightTip;
+
+    [Header("=== Hand Anchors ===")]
+    public Transform leftHand;
+    public Transform rightHand;
+
+    [Header("=== Controllers ===")]
+    public OVRInput.Controller leftController
+        = OVRInput.Controller.LTouch;
+    public OVRInput.Controller rightController
+        = OVRInput.Controller.RTouch;
+    [Range(0.1f, 1f)] public float triggerThreshold = 0.5f;
+
+    [Header("=== Audio ===")]
+    public AudioSource pushSound;
+    [Range(0f, 1f)] public float pushSoundVolume = 1f;
+
+    [Header("=== Ground Detection ===")]
+    public LayerMask groundLayers = ~0;
+    public float poleTipGroundTolerance = 0.3f;
+    public float groundRayLength = 10f;
+
+    [Header("=== Push Detection ===")]
+    public float accelerationThreshold = 1.5f;
+    public float minForwardDistance = 0.05f;
+
+    [Header("=== Speed Settings ===")]
+    public float pushPower = 3f;
+    public float pushVelocityScale = 1.2f;
+    public float maxPushGain = 4f;
+    public float maxSpeed = 10f;
+
+    [Header("=== Friction ===")]
+    [Range(0f, 3f)] public float friction = 0.3f;
+    [Range(0f, 3f)] public float airDrag = 0f;
+    public float uphillFrictionMultiplier = 2.5f;
+    public float downhillAcceleration = 2f;
+    public float maxSlopeAngle = 45f;
+
+    [Header("=== Turning ===")]
+    public float turnAngleWindow = 0.2f;
+    public float turnAngleThreshold = 4f;
+    public float turnSpeedLossPerDegree = 0.015f;
+    public float turnSpeedLossSpeedFactor = 0.05f;
+    public float turnResponsiveness = 120f;
+
+    [Header("=== Brake ===")]
+    public float brakeFriction = 3f;
+
+    [Header("=== Ramp Jump ===")]
+    public float rampLaunchBoost = 4f;
+    public float minLaunchSpeed = 4f;
+    public float customGravity = 15f;
+
+    [Header("=== Game Integration ===")]
+    public ParkourCounter parkourCounter;
+    public SelectionTaskMeasure selectionTaskMeasure;
+    public string stage;
+
+    // Debug fields (visible in Inspector)
+    [Header("=== Debug ===")]
+    public string debugLeftState, debugRightState;
+    public bool debugLeftTrigger, debugRightTrigger;
+    public bool debugLeftTipGrounded, debugRightTipGrounded;
+    public float debugLeftTipHeight, debugRightTipHeight;
+    public float debugSpeed, debugLastPushPower, debugSlopeAngle;
+    public bool debugOnGround, debugGoingUphill, debugBraking;
+    public bool debugInAir, debugTurning;
+    public float debugVerticalVel, debugGroundY, debugPlayerY;
+    public float debugTurnAngle;
+    public string lastTriggerName, lastTriggerTag;
+    public int triggerEnterCount;
+
+    private enum PushState { IDLE, WINDING_UP, GROUND_CONTACT }
+
+    private PushState _leftState = PushState.IDLE;
+    private PushState _rightState = PushState.IDLE;
+    private Vector3 _prevLeftHandPos, _prevRightHandPos;
+    private Vector3 _prevLeftHandVel, _prevRightHandVel;
+    private float _leftPushImpulse, _rightPushImpulse;
+
+    private Vector3 _velocity;
+    private float _currentSpeed;
+    private float _verticalVelocity;
+    private bool _isInAir;
+    private Vector3 _lastSlopeForward;
+    private float _lastGroundY;
+    private Vector3 _lastGroundNormal = Vector3.up;
+    private bool _hasGround;
+    private int _frameCount;
+    private Vector3 _prevHeadingDir;
+    private Vector3 _turnWindowStartDir;
+    private float _turnWindowTimer;
+
+    void Start()
+    {
+        _velocity = Vector3.zero;
+        _currentSpeed = 0f;
+        _verticalVelocity = 0f;
+        _isInAir = false;
+        _frameCount = 0;
+        _lastGroundY = 0f;
+
+        if (playerRb)
+        {
+            playerRb.useGravity = false;
+            playerRb.isKinematic = false;
+            playerRb.freezeRotation = true;
+            playerRb.interpolation
+                = RigidbodyInterpolation.Interpolate;
+            playerRb.linearVelocity = Vector3.zero;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!playerRb || !hmd) return;
+        _frameCount++;
+        if (_frameCount < 10)
+        {
+            if (leftHand) _prevLeftHandPos = leftHand.position;
+            if (rightHand) _prevRightHandPos = rightHand.position;
+            return;
+        }
+
+        // Head direction (horizontal)
+        Vector3 headForward = hmd.forward;
+        headForward.y = 0;
+        headForward = headForward.sqrMagnitude > 0.001f
+            ? headForward.normalized : Vector3.forward;
+        Vector3 headPos = hmd.position;
+
+        // Controller inputs
+        debugLeftTrigger = OVRInput.Get(
+            OVRInput.Axis1D.PrimaryIndexTrigger, leftController)
+            >= triggerThreshold;
+        debugRightTrigger = OVRInput.Get(
+            OVRInput.Axis1D.PrimaryIndexTrigger, rightController)
+            >= triggerThreshold;
+        bool leftGrip = OVRInput.Get(
+            OVRInput.Axis1D.PrimaryHandTrigger, leftController)
+            > 0.5f;
+        bool rightGrip = OVRInput.Get(
+            OVRInput.Axis1D.PrimaryHandTrigger, rightController)
+            > 0.5f;
+        debugBraking = leftGrip || rightGrip;
+
+        // Find ground below player
+        float groundY = _lastGroundY;
+        Vector3 groundNormal = Vector3.up;
+        float slopeAngle = 0f;
+        bool foundGround = false;
+
+        Vector3 rayStart = playerRb.position + Vector3.up * 1f;
+        if (Physics.Raycast(rayStart, Vector3.down,
+            out RaycastHit groundHit, groundRayLength,
+            groundLayers, QueryTriggerInteraction.Ignore))
+        {
+            groundY = groundHit.point.y;
+            groundNormal = groundHit.normal;
+            slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+            foundGround = true;
+            _lastGroundY = groundY;
+            _lastGroundNormal = groundNormal;
+        }
+        _hasGround = foundGround;
+        debugGroundY = groundY;
+        debugPlayerY = playerRb.position.y;
+        debugSlopeAngle = slopeAngle;
+
+        // Pole tip ground detection
+        debugLeftTipGrounded = false;
+        debugRightTipGrounded = false;
+        debugLeftTipHeight = 999f;
+        debugRightTipHeight = 999f;
+
+        if (leftTip != null)
+        {
+            if (Physics.Raycast(leftTip.position
+                + Vector3.up * 0.5f, Vector3.down,
+                out RaycastHit tipHit, 2f, groundLayers,
+                QueryTriggerInteraction.Ignore))
+            {
+                debugLeftTipHeight
+                    = leftTip.position.y - tipHit.point.y;
+                debugLeftTipGrounded
+                    = debugLeftTipHeight <= poleTipGroundTolerance;
+            }
+        }
+        if (rightTip != null)
+        {
+            if (Physics.Raycast(rightTip.position
+                + Vector3.up * 0.5f, Vector3.down,
+                out RaycastHit tipHit, 2f, groundLayers,
+                QueryTriggerInteraction.Ignore))
+            {
+                debugRightTipHeight
+                    = rightTip.position.y - tipHit.point.y;
+                debugRightTipGrounded
+                    = debugRightTipHeight <= poleTipGroundTolerance;
+            }
+        }
+
+        // Process hand pushes
+        if (leftHand) ProcessHand(leftHand,
+            ref _prevLeftHandPos, ref _prevLeftHandVel,
+            ref _leftState, ref _leftPushImpulse,
+            debugLeftTrigger, debugLeftTipGrounded,
+            headPos, headForward, "LEFT");
+        if (rightHand) ProcessHand(rightHand,
+            ref _prevRightHandPos, ref _prevRightHandVel,
+            ref _rightState, ref _rightPushImpulse,
+            debugRightTrigger, debugRightTipGrounded,
+            headPos, headForward, "RIGHT");
+
+        debugLeftState = _leftState.ToString();
+        debugRightState = _rightState.ToString();
+
+        // Slope direction
+        Vector3 slopeDown = Vector3.zero;
+        if (foundGround && slopeAngle <= maxSlopeAngle)
+        {
+            slopeDown = Vector3.ProjectOnPlane(
+                Vector3.down, groundNormal);
+            slopeDown.y = 0f;
+            if (slopeDown.sqrMagnitude > 0.001f)
+                slopeDown.Normalize();
+        }
+
+        if (!_isInAir && foundGround
+            && slopeDown.sqrMagnitude > 0.001f)
+        {
+            float slopeFactor
+                = Mathf.Sin(slopeAngle * Mathf.Deg2Rad);
+            _velocity += slopeDown * (downhillAcceleration
+                * slopeFactor * Time.fixedDeltaTime);
+        }
+
+        float speed = _velocity.magnitude;
+        Vector3 headingDir = speed > 0.01f
+            ? _velocity / speed : headForward;
+
+        if (_prevHeadingDir.sqrMagnitude < 0.001f)
+            _prevHeadingDir = headingDir;
+        if (_turnWindowStartDir.sqrMagnitude < 0.001f
+            || _turnWindowTimer <= 0f)
+            _turnWindowStartDir = headingDir;
+
+        bool goingUphill = false;
+        bool goingDownhill = false;
+        if (slopeDown.sqrMagnitude > 0.001f)
+        {
+            float alongSlope
+                = Vector3.Dot(headingDir, slopeDown);
+            goingDownhill = alongSlope > 0.1f;
+            goingUphill = alongSlope < -0.1f;
+        }
+        debugGoingUphill = goingUphill;
+
+        // Turning detection
+        float frameTurnAngle
+            = Vector3.Angle(_prevHeadingDir, headingDir);
+        _prevHeadingDir = headingDir;
+        _turnWindowTimer += Time.fixedDeltaTime;
+        float windowTurnAngle
+            = Vector3.Angle(_turnWindowStartDir, headingDir);
+        if (_turnWindowTimer >= turnAngleWindow)
+        {
+            _turnWindowTimer = 0f;
+            _turnWindowStartDir = headingDir;
+        }
+        bool isTurning = windowTurnAngle > turnAngleThreshold;
+        debugTurning = isTurning && !_isInAir && foundGround;
+        debugTurnAngle = windowTurnAngle;
+
+        // Friction / drag
+        float speedBefore = _velocity.magnitude;
+        if (_isInAir)
+        {
+            if (airDrag > 0f && speedBefore > 0.001f)
+            {
+                float ns = Mathf.MoveTowards(
+                    speedBefore, 0f,
+                    airDrag * Time.fixedDeltaTime);
+                _velocity = _velocity.normalized * ns;
+            }
+        }
+        else
+        {
+            float effectiveFriction = friction;
+            if (debugBraking)
+                effectiveFriction = brakeFriction;
+            else if (foundGround)
+            {
+                if (goingUphill)
+                    effectiveFriction
+                        = friction * uphillFrictionMultiplier;
+                else if (goingDownhill)
+                    effectiveFriction = friction * 0.3f;
+            }
+            float ns = Mathf.MoveTowards(
+                speedBefore, 0f,
+                effectiveFriction * Time.fixedDeltaTime);
+            if (speedBefore > 0.001f)
+                _velocity = _velocity.normalized * ns;
+        }
+
+        // Turn speed loss
+        if (!_isInAir && foundGround && isTurning
+            && _velocity.sqrMagnitude > 0.0001f)
+        {
+            float speedScale = 1f + (_velocity.magnitude
+                * turnSpeedLossSpeedFactor);
+            float turnLoss = frameTurnAngle
+                * turnSpeedLossPerDegree * speedScale;
+            float reduced = Mathf.Max(0f,
+                _velocity.magnitude - turnLoss);
+            _velocity = _velocity.normalized * reduced;
+        }
+
+        // Steer toward head
+        if (!_isInAir && foundGround
+            && _velocity.sqrMagnitude > 0.0001f)
+        {
+            float maxRad = turnResponsiveness
+                * Mathf.Deg2Rad * Time.fixedDeltaTime;
+            Vector3 targetVel
+                = headForward * _velocity.magnitude;
+            _velocity = Vector3.RotateTowards(
+                _velocity, targetVel, maxRad, 0f);
+        }
+
+        if (_velocity.magnitude > maxSpeed)
+            _velocity = _velocity.normalized * maxSpeed;
+
+        _currentSpeed = _velocity.magnitude;
+        debugSpeed = _currentSpeed;
+
+        // === MOVEMENT ===
+        Vector3 newPos = playerRb.position;
+        Vector3 travelDir = _velocity.sqrMagnitude > 0.0001f
+            ? _velocity.normalized : headForward;
+
+        if (_isInAir)
+        {
+            debugInAir = true;
+            debugOnGround = false;
+            _verticalVelocity
+                -= customGravity * Time.fixedDeltaTime;
+            debugVerticalVel = _verticalVelocity;
+            newPos += _velocity * Time.fixedDeltaTime;
+            newPos.y += _verticalVelocity * Time.fixedDeltaTime;
+
+            if (foundGround && newPos.y <= groundY
+                && _verticalVelocity <= 0)
+            {
+                _isInAir = false;
+                _verticalVelocity = 0f;
+                newPos.y = groundY;
+            }
+        }
+        else
+        {
+            debugInAir = false;
+            debugOnGround = foundGround;
+            _verticalVelocity = 0f;
+            debugVerticalVel = 0f;
+
+            if (foundGround)
+            {
+                newPos.y = groundY;
+                Vector3 moveDelta
+                    = _velocity * Time.fixedDeltaTime;
+                newPos.x += moveDelta.x;
+                newPos.z += moveDelta.z;
+
+                _lastSlopeForward = Vector3.ProjectOnPlane(
+                    travelDir, groundNormal).normalized;
+                if (_lastSlopeForward.sqrMagnitude < 0.001f)
+                    _lastSlopeForward = travelDir;
+
+                // Ramp launch check
+                if (goingUphill
+                    && _currentSpeed >= minLaunchSpeed
+                    && slopeAngle > 15f)
+                {
+                    Vector3 aheadPos = newPos
+                        + travelDir * 1.5f + Vector3.up * 1f;
+                    if (!Physics.Raycast(aheadPos,
+                        Vector3.down, 4f, groundLayers,
+                        QueryTriggerInteraction.Ignore))
+                    {
+                        _isInAir = true;
+                        _verticalVelocity
+                            = _lastSlopeForward.y * _currentSpeed
+                            + rampLaunchBoost;
+                    }
+                }
+            }
+        }
+
+        playerRb.MovePosition(newPos);
+
+        // Respawn
+        if (OVRInput.Get(OVRInput.Button.Two)
+            || OVRInput.Get(OVRInput.Button.Four))
+        {
+            if (parkourCounter != null
+                && parkourCounter.parkourStart)
+            {
+                playerRb.position
+                    = parkourCounter.currentRespawnPos;
+                _velocity = Vector3.zero;
+                _currentSpeed = 0f;
+                _verticalVelocity = 0f;
+                _isInAir = false;
+            }
+        }
+    }
+
+    void ProcessHand(Transform hand, ref Vector3 prevPos,
+        ref Vector3 prevVel, ref PushState state,
+        ref float pushImpulse, bool triggerHeld,
+        bool tipGrounded, Vector3 headPos,
+        Vector3 headForward, string handName)
+    {
+        Vector3 currentVel
+            = (hand.position - prevPos) / Time.fixedDeltaTime;
+        Vector3 accelVec
+            = (currentVel - prevVel) / Time.fixedDeltaTime;
+        float acceleration = accelVec.magnitude;
+        Vector3 handRelative = hand.position - headPos;
+        float forwardDist
+            = Vector3.Dot(handRelative, headForward);
+
+        prevPos = hand.position;
+        prevVel = currentVel;
+
+        switch (state)
+        {
+            case PushState.IDLE:
+                pushImpulse = 0f;
+                if (triggerHeld
+                    && acceleration > accelerationThreshold
+                    && forwardDist > minForwardDistance)
+                {
+                    state = PushState.WINDING_UP;
+                    pushImpulse = 0f;
+                }
+                break;
+
+            case PushState.WINDING_UP:
+                if (!triggerHeld)
+                {
+                    state = PushState.IDLE;
+                    pushImpulse = 0f;
+                }
+                else
+                {
+                    float velAlong = Vector3.Dot(
+                        currentVel, headForward);
+                    float backwardVel
+                        = Mathf.Max(0f, -velAlong);
+                    pushImpulse += backwardVel
+                        * pushVelocityScale
+                        * Time.fixedDeltaTime;
+                    float maxImpulse = Mathf.Max(0f,
+                        maxPushGain - pushPower);
+                    if (pushImpulse > maxImpulse)
+                        pushImpulse = maxImpulse;
+
+                    if (tipGrounded)
+                    {
+                        state = PushState.GROUND_CONTACT;
+                        float gain = Mathf.Min(
+                            pushPower + pushImpulse,
+                            maxPushGain);
+                        _velocity += headForward * gain;
+                        debugLastPushPower = gain;
+                        PlayPushSound();
+                    }
+                }
+                break;
+
+            case PushState.GROUND_CONTACT:
+                if (!triggerHeld || !tipGrounded)
+                {
+                    state = PushState.IDLE;
+                    pushImpulse = 0f;
+                }
+                break;
+        }
+    }
+
+    void PlayPushSound()
+    {
+        if (pushSound)
+        {
+            pushSound.volume = pushSoundVolume;
+            pushSound.Play();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        triggerEnterCount++;
+        lastTriggerName = other.gameObject.name;
+        lastTriggerTag = other.tag;
+
+        if (other.CompareTag("banner"))
+        {
+            stage = other.gameObject.name;
+            if (parkourCounter != null)
+                parkourCounter.isStageChange = true;
+        }
+        else if (other.CompareTag("objectInteractionTask"))
+        {
+            if (selectionTaskMeasure != null)
+            {
+                selectionTaskMeasure.isTaskStart = true;
+                selectionTaskMeasure.scoreText.text = "";
+                selectionTaskMeasure.partSumErr = 0f;
+                selectionTaskMeasure.partSumTime = 0f;
+                float tempValueY
+                    = other.transform.position.y > 0
+                    ? 12 : 0;
+                Vector3 tmpTarget = new(
+                    hmd.transform.position.x, tempValueY,
+                    hmd.transform.position.z);
+                selectionTaskMeasure.taskUI.transform
+                    .LookAt(tmpTarget);
+                selectionTaskMeasure.taskUI.transform
+                    .Rotate(new Vector3(0, 180f, 0));
+                selectionTaskMeasure.taskStartPanel
+                    .SetActive(true);
+            }
+        }
+        else if (other.CompareTag("coin"))
+        {
+            if (parkourCounter != null)
+                parkourCounter.coinCount += 1;
+            AudioSource audio = GetComponent<AudioSource>();
+            if (audio != null) audio.Play();
+            other.gameObject.SetActive(false);
+        }
+    }
+}
+\`\`\`
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Debug HUD: SkiDebugHUDV10.cs
+
+\`\`\`csharp
+using UnityEngine;
+using TMPro;
+
+public class SkiDebugHUDV10 : MonoBehaviour
+{
+    public TextMeshProUGUI debugText;
+    public SkiLocomotionV10 ski;
+
+    void Update()
+    {
+        if (!debugText || !ski) return;
+
+        string leftTip = ski.debugLeftTipGrounded
+            ? $"<color=green>GND ({ski.debugLeftTipHeight:F2}m)"
+            + "</color>"
+            : $"<color=red>AIR ({ski.debugLeftTipHeight:F2}m)"
+            + "</color>";
+        string rightTip = ski.debugRightTipGrounded
+            ? $"<color=green>GND ({ski.debugRightTipHeight:F2}m)"
+            + "</color>"
+            : $"<color=red>AIR ({ski.debugRightTipHeight:F2}m)"
+            + "</color>";
+
+        string leftState = GetStateDisplay(
+            ski.debugLeftState, ski.debugLeftTrigger);
+        string rightState = GetStateDisplay(
+            ski.debugRightState, ski.debugRightTrigger);
+
+        float pct = ski.debugSpeed
+            / Mathf.Max(ski.maxSpeed, 1f);
+        string bar = SpeedBar(pct);
+
+        string groundState;
+        if (ski.debugInAir)
+            groundState = $"<color=yellow>IN AIR "
+                + $"(v={ski.debugVerticalVel:F1})</color>";
+        else if (ski.debugBraking)
+            groundState = "<color=orange>BRAKING</color>";
+        else if (ski.debugGoingUphill)
+            groundState = $"<color=red>UPHILL "
+                + $"{ski.debugSlopeAngle:F0}°</color>";
+        else if (ski.debugSlopeAngle > 5f)
+            groundState = $"<color=green>DOWNHILL "
+                + $"{ski.debugSlopeAngle:F0}°</color>";
+        else
+            groundState = "<color=white>FLAT</color>";
+
+        debugText.text = $@"<b>SKI V10</b>
+
+<b>LEFT:</b>  {leftState}
+  Tip: {leftTip}
+<b>RIGHT:</b> {rightState}
+  Tip: {rightTip}
+
+<b>SPEED:</b> {ski.debugSpeed:F1} / {ski.maxSpeed}
+[{bar}]
+Last push: +{ski.debugLastPushPower:F1}
+
+<b>TERRAIN:</b> {groundState}
+PlayerY={ski.debugPlayerY:F1} GroundY={ski.debugGroundY:F1}";
+    }
+
+    string GetStateDisplay(string state, bool trigger)
+    {
+        string trig = trigger
+            ? "<color=green>T</color>"
+            : "<color=grey>T</color>";
+        string stateColor = state switch
+        {
+            "IDLE" => "grey",
+            "WINDING_UP" => "yellow",
+            "GROUND_CONTACT" => "cyan",
+            _ => "white"
+        };
+        return $"[{trig}] <color={stateColor}>{state}</color>";
+    }
+
+    string SpeedBar(float pct)
+    {
+        int filled = Mathf.Clamp(
+            Mathf.RoundToInt(pct * 15), 0, 15);
+        return new string('█', filled)
+            + new string('░', 15 - filled);
+    }
+}
+\`\`\`
+
+<a href="https://github.com/FatemehShirvani/HCI-for-Mixed-Reality" target="_blank">View Full Repository on GitHub</a>`
   },
   '/about.txt': {
     type: 'file',
@@ -1274,7 +2379,7 @@ const hwMeta = {
   '/labs/hw2.md':     { num: 'HW 2', title: 'Setup Unity', points: '10 pts' },
   '/labs/hw3.md':     { num: 'HW 3', title: 'Unity Roll-A-Ball', points: '15 pts' },
   '/labs/hw4.md':     { num: 'HW 4', title: 'Unity Roll-A-Ball in VR', points: '15 pts' },
-  '/labs/hw5.md':     { num: 'HW 5', title: 'Locomotion Technique Implementation', points: '30 pts' },
+  '/labs/hw5.md':     { num: 'HW 5', title: 'Ski Pole Locomotion Implementation', points: '30 pts' },
 };
 
 // ============================================================
