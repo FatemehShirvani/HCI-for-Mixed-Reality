@@ -814,7 +814,6 @@ Documentation (README)
 ### Advanced Features
 Embedded images support  
 PDF downloads  
-Video placeholders  
 Custom styling  
 No auto-scroll (user-friendly reading)
 
@@ -1102,7 +1101,7 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 ## Overview
 
-We implemented a **ski pole locomotion technique** for the VR parkour scene using Unity 6 and Meta Quest 3. The user holds virtual ski poles and pushes against the ground to propel themselves forward, like cross-country skiing. The final implementation (V10) handles push detection, ground contact, slope physics, airborne mechanics, braking, and ramp-based jumping.
+We implemented a **ski pole locomotion technique** for the VR parkour scene using Unity 6 and Meta Quest 3. The user holds virtual ski poles and pushes against the ground to propel themselves forward, like cross-country skiing. The final implementation handles push detection, ground contact, slope physics, airborne mechanics, braking, and ramp-based jumping.
 
 This page documents the **full iterative development process** — from our first broken prototype to the final working version, including every challenge we faced and how we solved it.
 
@@ -1110,8 +1109,9 @@ This page documents the **full iterative development process** — from our firs
 
 ## Demo Video
 
-<!-- PLACEHOLDER_VIDEO: Record a demo video of the final ski locomotion in action. Upload as labs/lab5/demo.mp4 or link to YouTube -->
-<p style="color: #facc15; border: 1px dashed #facc15; padding: 12px; border-radius: 8px;">📹 [Upload demo video here — labs/lab5/demo.mp4 or YouTube link]</p>
+<video width="640" height="480" controls>
+  <source src="demo.mp4" type="video/mp4">
+</video>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -1143,7 +1143,7 @@ OVRCameraRig               ← Rigidbody + CapsuleCollider + SkiLocomotionV10
 \`\`\`
 
 <!-- PLACEHOLDER_IMG_1: Screenshot of the Unity hierarchy panel showing this structure. Save as labs/lab5/hierarchy.png -->
-<img src="labs/lab5/hierarchy.png" alt="Unity hierarchy showing OVRCameraRig setup with poles" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab5/lab5-1.png" alt="Unity hierarchy showing OVRCameraRig setup with poles" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 The poles are children of the hand anchors, with Tip transforms at the bottom of each pole for ground detection. A critical lesson: tips must be **plain Transforms** — no Rigidbodies, no Colliders. We learned this the hard way.
 
@@ -1155,9 +1155,6 @@ We went through **10 major iterations** to reach the final version. Each version
 
 ### V1: The First Attempt (Broken)
 
-<!-- PLACEHOLDER_IMG_2: Screenshot of V1 Inspector showing original SkiLocomotion settings with the wrong values. Save as labs/lab5/v1-inspector.png -->
-<img src="labs/lab5/v1-inspector.png" alt="V1 Inspector showing original broken settings" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-
 Our initial implementation had three critical problems:
 
 **Problem 1: Ground detection never triggered.** The pole tips had their own Kinematic Rigidbodies and Capsule Colliders with a separate PoleTipContact script. The raycast distance was only 0.25m — far too short for VR where the tracking coordinate space doesn't match what you'd expect. The debug HUD always showed "Grounded: false".
@@ -1165,9 +1162,6 @@ Our initial implementation had three critical problems:
 **Problem 2: Insane spinning.** We used AddTorque for steering with a yawTorqueGain of 18. The calculation was steerAngle × backSpeed × yawTorqueGain, which could produce values like 45° × 1 m/s × 18 = **810 torque**. The player spun wildly out of control.
 
 **Problem 3: Physics conflicts.** Having Kinematic Rigidbodies on the pole tips (which are children of hand-tracked transforms) caused unpredictable physics behavior.
-
-<!-- PLACEHOLDER_IMG_3: Screenshot of V1 debug HUD in VR showing "Grounded: false" on both tips. Save as labs/lab5/v1-debug.png -->
-<img src="labs/lab5/v1-debug.png" alt="Debug HUD showing Grounded: false" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -1210,9 +1204,6 @@ V4 separated steering from head tracking and introduced trigger-based controls �
 
 ### V5: Sound & Push Feedback
 
-<!-- PLACEHOLDER_IMG_4: Screenshot or photo showing VR testing with V5, ideally showing the debug HUD with momentum bar. Save as labs/lab5/v5-testing.png -->
-<img src="labs/lab5/v5-testing.png" alt="Testing V5 with momentum system" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
-
 Key additions:
 - Direction became **independent from head** — only poles control turning
 - Each push **adds to current speed** rather than replacing it
@@ -1253,8 +1244,6 @@ If both poles to the RIGHT:
 
 ### V8–V9: The VR Height Problem
 
-<!-- PLACEHOLDER_IMG_5: Screenshot of debug HUD showing tip height values far above ground. Save as labs/lab5/v8-height-debug.png -->
-<img src="labs/lab5/v8-height-debug.png" alt="Debug showing tip height values vs ground" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 We discovered a fundamental VR coordinate problem. The OVRCameraRig sits at floor level (Y ≈ 0), the HMD is ~1.6m above, hand controllers ~1.0m above. Our code had a playerHeight offset that made things worse.
 
@@ -1409,8 +1398,6 @@ Turn detection uses a **windowed approach** — we measure heading change over t
 
 ### 4. Gravity, Slopes & Ground Following
 
-<!-- PLACEHOLDER_IMG_6: Screenshot showing the parkour course hills — one uphill and one downhill section. Save as labs/lab5/slopes.png -->
-<img src="labs/lab5/slopes.png" alt="Parkour course hills showing slope sections" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 Our early versions only moved horizontally, causing the player to sink into slopes. V10 projects movement onto the terrain surface:
 
@@ -1456,9 +1443,6 @@ if (_isInAir)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### 5. Ramp Jumping
-
-<!-- PLACEHOLDER_IMG_7: Screenshot of the ramp in the parkour scene with floating coins above. Save as labs/lab5/ramp.png -->
-<img src="labs/lab5/ramp.png" alt="Ramp with floating coins above" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 Some coins float in the air. We added a ramp and implemented automatic launch detection:
 
@@ -1581,6 +1565,8 @@ Ground Detection:
 - [x] Ramp jumping
 - [x] Push sound effects
 - [x] Respawn system (B/Y button)
+- [x] Pizza-shape braking visual feedback (skis inward)
+- [x] V-shape airborn visual feedback (skis outward)
 - [x] Debug HUD for development
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
