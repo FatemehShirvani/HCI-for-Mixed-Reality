@@ -18,14 +18,14 @@ const fileSystem = {
     content: `# Lecture Homework 1: Locomotion Techniques for VR
 By Fatemeh Shirvani & Amélien Le Meur
 
-## 📥 Download Full Presentation
+##  Download Full Presentation
 <a href="Lecture-HW1-LocomotionPitch.pdf" download>Download PDF (Lecture-HW1-LocomotionPitch.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ## Idea 1: Frame Split
 
-<img src="hw1-slide2.jpg" alt="Frame Split Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide2.jpg" alt="Frame Split Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 The user uses their handheld controllers to split the frame, bringing 
@@ -41,7 +41,7 @@ Mimic traditional animation frames and limit motion-sickness
 - Each frame shows a step closer to the destination
 - Inspired by stop-motion animation and flipbook aesthetics
 
-<img src="hw1-slide3.jpg" alt="Frame Split Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide3.jpg" alt="Frame Split Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ No motion sickness
@@ -63,7 +63,7 @@ What we want to test:
 
 ## Idea 2: Motion Map
 
-<img src="hw1-slide4.jpg" alt="Motion Map Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide4.jpg" alt="Motion Map Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 The user can pull out a map of their surroundings with their right hand 
@@ -79,7 +79,7 @@ Mimic tabletop games with tokens
 - Release: Teleport to that position
 - Like moving a chess piece on a board
 
-<img src="hw1-slide5.jpg" alt="Motion Map Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide5.jpg" alt="Motion Map Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ No motion sickness
@@ -103,7 +103,7 @@ What we want to test:
 
 ## Idea 3: Move the World
 
-<img src="hw1-slide6.jpg" alt="Move the World Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide6.jpg" alt="Move the World Concept" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Concept
 Instead of walking, the user "grabs" the world and pulls themselves forward.
@@ -118,7 +118,7 @@ Simple, intuitive control
 - Like climbing a rope or pulling yourself along a rail
 - Release and repeat for continuous movement
 
-<img src="hw1-slide7.jpg" alt="Move the World Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw1/hw1-slide7.jpg" alt="Move the World Evaluation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Advantages
 ✓ Doesn't require physical space
@@ -149,29 +149,19 @@ What we want to test:
 4. Ease of use ratings (1-10 scale)
 5. User preference rankings
 6. Qualitative feedback
-
-### Comparison Baseline:
-- Standard joystick locomotion
-- Teleportation (if available)
-
-### Presentation Date
-Presented: Week 2 (December 9, 2024)
-
-## Resources
-- Inspiration: https://www.youtube.com/watch?v=p0YxzgQG2-E
-- Full presentation: Lecture-HW1-LocomotionPitch.pdf`
+`
   },
   '/lectures/hw2.md': {
     type: 'file',
     content: `# Lecture Homework 2: World-in-Hand Locomotion Pitch (15 Points)
 By Fatemeh Shirvani & Amélien Le Meur
 
-## 📥 Download Full Presentation
+##  Download Full Presentation
 <a href="Lecture-HW2-WorldInHand.pdf" download>Download PDF (Lecture-HW2-WorldInHand.pdf)</a>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-<img src="hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide1.jpg" alt="World-in-Hand Title" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ## Selected Technique: World-in-Hand
 
@@ -189,7 +179,7 @@ After brainstorming three locomotion ideas in HW1, we selected **"Move the World
 
 ## Core Concept
 
-<img src="hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide5.jpg" alt="Core Concept Explanation" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Main Idea
 Instead of moving the user through the world, we move the world toward the user.
@@ -203,18 +193,18 @@ Instead of moving the user through the world, we move the world toward the user.
 
 ### Inspiration: How We Perceive the World
 
-<img src="hw2-slide3.jpg" alt="360-degree perception" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide3.jpg" alt="360-degree perception" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-<img src="hw2-slide4.jpg" alt="Pac-Man 360 example" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide4.jpg" alt="Pac-Man 360 example" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 We're inspired by 360-degree games where the environment wraps around 
 the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🎮 Interaction Design
+##  Interaction Design
 
-<img src="hw2-slide6.jpg" alt="Forward Movement and Jump" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide6.jpg" alt="Forward Movement and Jump" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Forward Movement
 
@@ -247,7 +237,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-<img src="hw2-slide7.jpg" alt="Speed Control and Steering" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw2/hw2-slide7.jpg" alt="Speed Control and Steering" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Speed Control
 
@@ -277,7 +267,7 @@ the player, creating immersion without requiring physical movement.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🏁 Application to Parkour Course
+##  Application to Parkour Course
 
 ### How It Addresses Requirements
 
@@ -309,16 +299,16 @@ the player, creating immersion without requiring physical movement.
 - **3D navigation** - Jump mechanic handles vertical space  
 - **Accessible** - No complex button combinations
 
-## ⚠️ Potential Challenges
+## Potential Challenges
 
-✗ **Learning curve** - Users need to understand the metaphor  
-✗ **Arm fatigue?** - Sustained pinch gesture over long sessions  
-✗ **Scale calibration** - Finding right sensitivity for speed/steering  
-✗ **Motion sickness?** - World scaling might still affect some users
+**Learning curve** - Users need to understand the metaphor  
+**Arm fatigue?** - Sustained pinch gesture over long sessions  
+**Scale calibration** - Finding right sensitivity for speed/steering  
+**Motion sickness?** - World scaling might still affect some users
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🔬 Evaluation Plan
+##  Evaluation Plan
 
 ### Metrics to Test (from HW1)
 
@@ -385,99 +375,25 @@ This pitch helped us clarify:
 - **Specific gestures** - Pinch, zoom, asymmetric steering, jump
 - **Technical challenges** - Exponential scaling, calibration needs
 - **Evaluation strategy** - Clear hypotheses to test
-
-### Instructor/Peer Feedback
-
-[Add feedback received during presentation here]
-
-### Refinements Since Pitch
-
-[Document any changes made after presentation feedback]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-## 📅 Timeline
-
-- **HW1:** Brainstormed 3 ideas (Frame Split, Motion Map, World-in-Hand)
-- **HW2:** Pitched World-in-Hand technique ✅
-- **HW3:** User evaluation with 3 participants (upcoming)
-- **HW5:** Full implementation in Unity parkour scene (upcoming)
-- **HW4:** Final presentation with results (Feb 3, 2025)
-
-## 🔗 Resources
-
-- Full presentation: Lecture-HW2-WorldInHand.pdf
-- Related work: VR locomotion techniques, world-scaling interfaces
-- Next: Implement and test (Labs HW4-5)`
+`
   },
   '/lectures/hw3.md': {
     type: 'file',
     content: `# Lecture Homework 3: Evaluate Your Locomotion Technique (15 Points)
 
-## Assignment
-Conduct a user study with yourself + 2 other participants (3 total).
+    We tested our locomotion technique on three participants. Here are a quick summary of the results:
+    <img src="homework/hw4/hw4-slide10.png" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
-## Metrics to Collect
 
-### Performance Metrics (measure and average):
-- Average time per round
-- Average accuracy per round  
-- Average number of finished rounds
-
-### Questionnaires (1-10 scale):
-
-**Simulator Sickness:**
-"On a scale from 1 to 10, how much motion sickness do you perceive right now?"
-(1 = lowest, 10 = highest)
-
-**Task Workload:**
-"On a scale from 1 to 10, how easy was it to perform the task?"
-(1 = lowest, 10 = highest)
-
-**Presence:**
-"On a scale from 1 to 10, how present did you feel in the virtual world?"
-(1 = lowest, 10 = highest)
-
-**Enjoyment:**
-"On a scale from 1 to 10, how much fun did you have during the task?"
-(1 = lowest, 10 = highest)
-
-## My Results
-
-### Participants
-- Participant 1 (You): [brief description]
-- Participant 2: [brief description]
-- Participant 3: [brief description]
-
-### Performance Data
-| Metric | P1 | P2 | P3 | Average |
-|--------|----|----|----|---------| 
-| Time per round | | | | |
-| Accuracy | | | | |
-| Finished rounds | | | | |
-
-### Questionnaire Results
-| Question | P1 | P2 | P3 | Average |
-|----------|----|----|----|---------| 
-| Simulator Sickness | | | | |
-| Task Workload | | | | |
-| Presence | | | | |
-| Enjoyment | | | | |
-
-### Analysis
-[What do these results tell you about your locomotion technique?]
-
-### Observations
-[What did you observe during testing?]
-[Any unexpected behaviors?]`
+`
   },
   '/lectures/hw4.md': {
     type: 'file',
     content: `# Lecture Homework 4: Final Presentation - Ski Pole Locomotion (15 Points)
 By Fatemeh Shirvani & Amélien Le Meur
 
-## 📥 Download Presentation & Demo
-<a href="Lecture-HW4-FinalPresentation.pdf" download>Download PDF Presentation</a>
+##  Download Presentation & Demo
+<a href="homework/hw4/Lecture-HW4-FinalPresentation.pdf" download>Download PDF Presentation</a>
 
 <video width="320" height="240" controls>
   <source src="demo.mp4" type="video/mp4">
@@ -485,7 +401,7 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 📋 Presentation Overview
+##  Presentation Overview
 
 **Structure:**
 1. Previous Concept Review (Frame Split)
@@ -499,9 +415,9 @@ By Fatemeh Shirvani & Amélien Le Meur
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🔄 Why We Changed From Frame Split
+##  Why We Changed From Frame Split
 
-<img src="hw4-slide3.jpg" alt="Previous Concept: Frame Split Issues" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide3.png" alt="Previous Concept: Frame Split Issues" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Frame Split Concept Recap
 From HW1, we explored splitting the frame into sequential views like animation frames to reduce motion sickness.
@@ -509,23 +425,23 @@ From HW1, we explored splitting the frame into sequential views like animation f
 ### Why We Abandoned It
 
 **Technical Issues:**
-- ✗ **Recursive rendering instability** - Rendering frames within frames caused performance problems
-- ✗ **High complexity, low interaction payoff** - Complex to implement, limited control
-- ✗ **Already implemented** - Someone had done a similar approach
+- **Recursive rendering instability** - Rendering frames within frames caused performance problems
+- **High complexity, low interaction payoff** - Complex to implement, limited control
+- **Already implemented** - Someone had done a similar approach
 
 **Design Issues:**
-- ✗ **Mismatch with embodied VR strengths** - Doesn't leverage physical interaction
-- ✗ **Feels like a video effect, not movement** - Breaks sense of presence
-- ✗ **Limited expressiveness for navigation** - Hard to control direction precisely
-- ✗ **Still caused motion sickness** - Didn't solve the core problem
+- **Mismatch with embodied VR strengths** - Doesn't leverage physical interaction
+- **Feels like a video effect, not movement** - Breaks sense of presence
+- **Limited expressiveness for navigation** - Hard to control direction precisely
+- **Still caused motion sickness** - Didn't solve the core problem
 
 **Decision:** Pivot to a more physical, embodied locomotion technique → **Ski Poles**
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## ⛷️ New Concept: Ski Pole Locomotion
+##  New Concept: Ski Pole Locomotion
 
-<img src="hw4-slide4.jpg" alt="New Concept: Skiing" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide4.png" alt="New Concept: Skiing" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Core Metaphor
 **User uses two poles to pull themselves forward** - like cross-country skiing
@@ -556,9 +472,9 @@ Implementing ski pole locomotion required solving 5 major challenges:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 💪 Challenge 1: Push Detection
+##  Challenge 1: Push Detection
 
-<img src="hw4-slide5.jpg" alt="Push Detection State Machine" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide5.png" alt="Push Detection State Machine" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Problem
 How to detect a valid ski pole push gesture?
@@ -601,7 +517,7 @@ _velocity += headForward * gain;
 
 ## Challenge 2: Tip Ground Detection
 
-<img src="hw4-slide6.jpg" alt="Ground Detection Problem" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide6.png" alt="Ground Detection Problem" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Problem
 **Pole tips never detected as "grounded"**
@@ -622,9 +538,9 @@ _velocity += headForward * gain;
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## ⛰️ Challenge 4 & 5: Gravity and Slope Physics
+## Challenge 4 & 5: Gravity and Slope Physics
 
-<img src="hw4-slide8.jpg" alt="Gravity and Slope Physics" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide8.png" alt="Gravity and Slope Physics" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Challenge 4: Gravity & Ground Following
 
@@ -658,7 +574,7 @@ _velocity += headForward * gain;
 
 ## Advanced Features: Airborne, Jumping, Braking
 
-<img src="hw4-slide9.jpg" alt="Airborne Motion and Braking" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide9.png" alt="Airborne Motion and Braking" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Airborne Motion
 - Ground detected via downward raycast
@@ -680,9 +596,9 @@ _velocity += headForward * gain;
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🧪 User Testing Results
+## User Testing Results
 
-<img src="hw4-slide10.jpg" alt="User Test Results" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="homework/hw4/hw4-slide10.png" alt="User Test Results" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
 
 ### Testing Protocol
 - Make users go around track **3 times**
@@ -691,23 +607,23 @@ _velocity += headForward * gain;
 
 ### Key Findings
 
-**⏱️ Completion Time: 1min 30s**
+** Completion Time: 1min 30s**
 - Average time around the track
 - Consistent across participants
 
-**🤢 Motion Sickness: Low**
+** Motion Sickness: Low**
 - Some motion sickness toward the end
 - But overall **very low levels**
 - Much better than expected!
 
-**😊 Ease of Use / Fun: High**
+** Ease of Use / Fun: High**
 - Users thought it was **pretty easy to use**
 - Intuitive after brief learning period
 - Engaging and fun!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## 🏁 Conclusion
+## Conclusion
 
 We successfully implemented **ski pole locomotion** for VR parkour:
 
@@ -716,7 +632,7 @@ We successfully implemented **ski pole locomotion** for VR parkour:
 **Works in parkour context** - Handles curves, slopes, elevated coins  
 **Better than Frame Split** - More engaging, more controllable
 
-**Thank you for following our journey!** ⛷️`
+**Thank you for following our journey!**`
   },
   '/labs': {
     type: 'dir',
@@ -1725,133 +1641,151 @@ Set up Unity3D environment following the tutorial.
 2. Bonus (if fast): https://learn.unity.com/tutorial/beginner-walkthroughs
 3. Bonus: Add IP-Paris "flavor" to your project
 
-## My Setup
 
 ### Unity Version
-[Which version did you install?]
+We installed Unity 6.2 which was the most recent version at the time.
 
 ### Installation Process
-[Document your setup steps]
-
-### First Project
-[What did you create?]
-
-### Screenshots
-[Add screenshots of your Unity environment]
-
-### IP-Paris Modifications
-[If you added IP-Paris flavor, describe it here]
+<img src="labs/lab2/lab2-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Here is the (empty) installs menu. We click on install, then choose the latest version: unity 6.2. the install starts (top right corner)
+<img src="labs/lab2/lab2-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+When the install is done, the editor appears and we can now suse it. Done ! 
 
 ### Challenges & Solutions
-[What problems did you face?]
-[How did you solve them?]
+We had a trouble syncing up at first because we didnt download exactly the same version as one another, so we had to redownload everything. 
+The installation also made one of our laptop crash;
 
 ## Resources
 - Unity Learn: https://learn.unity.com/
 - Unity Documentation
-- IP-Paris branding guidelines (if applicable)`
+
+`
   },
   '/labs/hw3.md': {
     type: 'file',
     content: `# Lab Homework 3: Unity Roll-A-Ball (15 Points)
+<img src="labs/lab3/lab3-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We start with an empty scene.
+<img src="labs/lab3/lab3-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+First, we create a floor on which everything will be placed
 
-## Assignment
-Create your first Unity application following the Roll-A-Ball tutorial.
+<img src="labs/lab3/lab3-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We add a ball on the floor.
 
-## Tutorial
-https://learn.unity.com/project/roll-a-ball
+<img src="labs/lab3/lab3-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We change the lighting so that it's warmer, we select a nice orange.
 
-## Requirements
-- Complete the full Roll-A-Ball tutorial
-- Document your learning process
-- Bonus: Add IP-Paris "flavor"
+<img src="labs/lab3/lab3-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We create a material & apply it to the ball to make it blue & shiny.
 
-## My Implementation
+<img src="labs/lab3/lab3-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+The ball now rolls with the user's inputs with a playercontroller script.
 
-### Learning Journey
-[What did you learn from this tutorial?]
+<img src="labs/lab3/lab3-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We make it so the camera follows the ball with a cameracontroller script.
 
-### Key Concepts Covered
-- Player movement
-- Camera control
-- Collectibles
-- UI elements
-- [Add others you learned]
+<img src="labs/lab3/lab3-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added walls all around the arena to prevent the ball from falling.
 
-### Screenshots/Video
-[Show your completed Roll-A-Ball game]
+<img src="labs/lab3/lab3-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We create collectible coins around the arena.
 
-### IP-Paris Customization
-[How did you customize it?]
+<img src="labs/lab3/lab3-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added a UI element thatt counts the amount of coins the player has collected.
 
-### Code Highlights
-[Any interesting code snippets you wrote?]
+<img src="labs/lab3/lab3-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+When all the collectibles have been collected, the game ends and a "you win screen" appears.
 
-\`\`\`csharp
-// Example: Your player movement code
-\`\`\`
+<img src="labs/lab3/lab3-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Skipping forward a little bit, we now have obstacles, the purples ones being moveable. We also added an AI enemy that follows the play and makes them lose when they touch each other.
 
-### Challenges
-[What was difficult?]
-[How did you debug issues?]
-
-## Reflection
-[What will you apply from this tutorial to future projects?]`
-  },
+### Challenges & Solutions
+This tutorial was pretty straightforward, the only issue was with the player controller which wouldn't work only because one of the letters was not capitalized.
+  `},
   '/labs/hw4.md': {
     type: 'file',
     content: `# Lab Homework 4: Unity Roll-A-Ball in VR (15 Points)
+<img src="labs/lab4/lab4-1.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We start by switching the platform to android, and we install the Meta All-in-one SDK
 
-## Assignment
-Adapt Roll-A-Ball into a VR version with selection techniques.
+<img src="labs/lab4/lab4-2.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We then install the XR plugin management
 
-## Tasks
-1. Implement Roll-A-Ball in VR
-2. Adapt for VR environment (check Lab3 on Moodle)
-3. Implement direct selection
-4. Implement raycasting
+<img src="labs/lab4/lab4-3.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We import the package created from the roll a ball assignment.
 
-## Optional Features
-- Different selection techniques (e.g., Go-Go)
-- Select multiple objects
-- Progressive refinement for disambiguation
-- Hand tracking input (trigger + pinch)
-- Sound/visual effects when picking up objects
-- Explosion effects
+<img src="labs/lab4/lab4-5.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab4/lab4-4.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We import the assets from tdhe X Interaction Toolkit, then added the XRI default input actions as actions assets and changed the normal camera.
 
-## My VR Implementation
 
-### VR Adaptation Process
-[How did you convert Roll-A-Ball to VR?]
+<img src="labs/lab4/lab4-6.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We Change palyer input and use XRI Default Input action instead of input action managment that was previously assigned.
+We also change Active Input Handling to Input System Package (New) 
 
-### Direct Selection
-[Describe your implementation]
+<img src="labs/lab4/lab4-7.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We have this error. The the game runned successfully and we could control the ball with left joystick as intended, but the camera was up and we did not have control to always see the ball 
 
-\`\`\`csharp
-// Direct selection code
-\`\`\`
+<img src="labs/lab4/lab4-8.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We make the camera xr origin a child of player so that they follow eacher other.
+We freeze the rotation in x and z directions to prevent the rotation of the camera with the ball.
 
-### Raycasting
-[Describe your implementation]
+<img src="labs/lab4/lab4-9.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We update the FixedUpdate() function so the ball turns where the player is looking
 
-\`\`\`csharp
-// Raycasting code
-\`\`\`
+<img src="labs/lab4/lab4-10.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+But making the xr origin a child of Player was not a good idea because the world was following us. For example, when we were looking upward, it was like the world was rotating so we make sure xr origin is not a child of player and player is not a child of xr origin and we make the xr origin follow the ball with a new script FollowBallPosition
 
-### Optional Features Implemented
-[Which optional features did you add?]
+<img src="labs/lab4/lab4-11.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+we assign a player to the script.
 
-### Demo Video
-[Link to video showing your VR Roll-A-Ball]
+<img src="labs/lab4/lab4-12.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We change the logic to move when we hold the trigger and joystick and follow the head direction
 
-### Technical Challenges
-[VR-specific issues you encountered]
+<img src="labs/lab4/lab4-13.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We move the ball a bit in front of the camera to fill,  like a chasing camera and that always sees the ball.
+Now the game is functioning well: we roll around the scene and follow the ball.
 
-### User Testing
-[Did anyone else try it? What was their feedback?]
+<img src="labs/lab4/lab4-14.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added left and right hand controllers as a child of XR origin.
+Added XR Grab Interactable to pickup prefab and turned off trigger check box.
+now the problem is that we never enter in trigger because we unchecked that box but it is fine since we want to grab from now on not trigger and we should change them 
 
-## Code Repository
-[GitHub link to your project]`
+
+# Tracking controller positions
+
+<img src="labs/lab4/lab4-15.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added tracked pose driver component to track the position and rotation of the controller in vr environment and assigned the refrence to left and right controller
+
+<img src="labs/lab4/lab4-17.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We turned them to match the real controllers 
+
+# Grabbing PickUp Objects
+
+<img src="labs/lab4/lab4-18.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Right now the ball is colliding with boxes and pushes them away since they are rigid bodies. 
+
+<img src="labs/lab4/lab4-19.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Added a layer grabbable
+
+<img src="labs/lab4/lab4-20.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Unchecked the collision between  grabbable layer and Player layer which is the layer of Player.
+
+# Raycasting
+
+<img src="labs/lab4/lab4-21.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+We tried to add xr ray interactor to each hand but got this error
+
+<img src="labs/lab4/lab4-22.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+So we created a Ray child for each hand and added the components  XR Ray Interactor, XR Interactor Line Visual to them
+
+<img src="labs/lab4/lab4-23.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+<img src="labs/lab4/lab4-24.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+Now we have rays coming from each controller.
+
+<img src="labs/lab4/lab4-25.png" alt="" style="max-width: 100%; height: auto; margin: 20px 0; border: 2px solid var(--border); border-radius: 8px;">
+For selecting we then added a XR Simple Interactable to enemy game obj.
+`
   },
   '/labs/hw5.md': {
     type: 'file',
