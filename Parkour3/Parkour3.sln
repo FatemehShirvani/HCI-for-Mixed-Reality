@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parkour", "Parkour", "{F9BC48EC-E1B8-09B8-E2A3-260CABDBA908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Parkour\Assembly-CSharp.csproj", "{14C13EC8-4121-D254-8B5C-27E36C7DEB6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polyperfect.Common", "Parkour\Polyperfect.Common.csproj", "{CC5403AB-FF8D-0390-2CBC-D900B40C0777}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14C13EC8-4121-D254-8B5C-27E36C7DEB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C13EC8-4121-D254-8B5C-27E36C7DEB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C13EC8-4121-D254-8B5C-27E36C7DEB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C13EC8-4121-D254-8B5C-27E36C7DEB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC5403AB-FF8D-0390-2CBC-D900B40C0777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC5403AB-FF8D-0390-2CBC-D900B40C0777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC5403AB-FF8D-0390-2CBC-D900B40C0777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC5403AB-FF8D-0390-2CBC-D900B40C0777}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14C13EC8-4121-D254-8B5C-27E36C7DEB6D} = {F9BC48EC-E1B8-09B8-E2A3-260CABDBA908}
+		{CC5403AB-FF8D-0390-2CBC-D900B40C0777} = {F9BC48EC-E1B8-09B8-E2A3-260CABDBA908}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A90F889-393B-4BA5-8ED0-39F6AC821B4C}
+	EndGlobalSection
+EndGlobal
