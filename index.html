@@ -3,36 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HCI for MR - Terminal</title>
+  <title>HCI for MR</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page-content">
-    <main>
-      <pre class="ascii-title">
-    __  ____________   ____              __  _______ 
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="#" class="logo-link" onclick="navigateTo('home'); return false;">
+      <pre class="ascii-title">    __  ____________   ____              __  _______ 
    / / / / ____/  _/  / __/___  _____   /  |/  / __ \
   / /_/ / /    / /   / /_/ __ \/ ___/  / /|_/ / /_/ /
  / __  / /____/ /   / __/ /_/ / /     / /  / / _, _/ 
-/_/ /_/\____/___/  /_/  \____/_/     /_/  /_/_/ |_|  
-                                                     
-Fatemeh Shirvani & Amélien Le Meur | IP Paris 2025-2026
-</pre>
+/_/ /_/\____/___/  /_/  \____/_/     /_/  /_/_/ |_|  </pre>
+    </a>
+    <p class="subtitle">Fatemeh Shirvani &amp; Amélien Le Meur &nbsp;|&nbsp; IP Paris 2025-2026</p>
+  </header>
 
-      <div id="term" class="term">
-        <div class="term-output" id="termOut"></div>
-        
-        <div class="term-inputline">
-          <span class="prompt">$</span>
-          <span class="inputwrap">
-            <input id="termIn" class="term-input" type="text" autocomplete="off" spellcheck="false" autofocus />
-            <span id="blk" class="blk" aria-hidden="true">█</span>
-            <div></div>
-          </span>
-        </div>
-      </div>
-    </main>
-  </div>
+  <!-- ===== BREADCRUMB ===== -->
+  <nav class="breadcrumb" id="breadcrumb">
+    <a href="#" onclick="navigateTo('home'); return false;">Home</a>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="content">
+    <!-- JS will render here -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IGD301: Human-Computer Interaction for Mixed Reality &nbsp;·&nbsp; Instructor: Daniel Medeiros &nbsp;·&nbsp; Télécom Paris / IP Paris</p>
+    <p class="footer-links">
+      <a href="https://github.com/FatemehShirvani/HCI-for-Mixed-Reality" target="_blank">GitHub Repository</a>
+    </p>
+  </footer>
 
   <script src="terminal.js"></script>
 </body>
